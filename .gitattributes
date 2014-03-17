@@ -27,6 +27,9 @@ src/main/webapp/images/graph_small.png -text
 src/main/webapp/index.jsp -text
 src/main/webapp/membership.jsp -text
 src/main/webapp/menu.jsp -text
+src/main/webapp/publicationCount.jsp -text
+src/main/webapp/publicationYear.jsp -text
+src/main/webapp/publicationYearData.jsp -text
 src/main/webapp/resources/layout.css -text
 src/test/java/Shakeosphere/DemoTest.java -text
 src/test/resources/README.txt -text
