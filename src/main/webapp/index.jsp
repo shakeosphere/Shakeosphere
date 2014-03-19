@@ -5,37 +5,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Research Networking Collaborative</title>
-<style type="text/css" media="all">@import "resources/layout.css";</style>
+<title>Shakeosphere</title>
+<style type="text/css" media="all">@import "resources/style.css";</style>
 </head>
 <body>
-
-<div id="roof" style="background-image: url(images/graph_small.png); height: 92px"><div> </div></div>
-<div id="content">
+<div id="body">
 <jsp:include page="header.jsp" flush="true" />
-
-
-<c:if test="${empty guid}">
-	<c:set var="guid" value="guest" scope="session" />
-</c:if>
 <jsp:include page="menu.jsp" flush="true">
 	<jsp:param name="caller" value="index" />
 </jsp:include>
-<div id="centerCol">
-<h1>The Research Networking Collaborative</h1>
-<p>Research Networking involves both technical elements (the deployment of a platform to engage researchers and field information
-regarding their research), </p>
-<p>Research Networking (RN) is about using web-based tools to discover and use research and scholarly information about people and resources.
-Research Networking tools (RN tools) serve as knowledge management systems for the research enterprise. RN tools connect
-institution-level/enterprise systems, national research networks, publicly available research data (e.g., grants and publications), and
-restricted/proprietary data by harvesting information from disparate sources into compiled expertise profiles for faculty, investigators,
-scholars, clinicians, community partners, and facilities. RN tools facilitate the development of new collaborations and team science to
-address new or existing research challenges through the rapid discovery and recommendation of researchers, expertise, and resources.</p>
-<br />
-<br />
-<br />
-<jsp:include page="footer.jsp" flush="true" />
+<div id="center">
+<h2>Welcome to Shakeosphere</h2>
+<p> "Shakeosphere" is a digital tool that will allow users around the globe to visualize, map, and explore early modern social networks. 
+Information about early publishers, printers, authors, and the manuscript records they left behind has long been available,
+but only in far-flung scholarly articles and library catalogues. "Shakeosphere" will bring this data together in one place for the first time.
+</p>
+<p> Users can then curate and query this data to understand the way information travelled in Shakespeare's world and to learn more about
+individual authors and texts. Once the tool is fully functional, each "node" representing a person or work will be linked to bibliographic
+and biographical information - and we will encourage users to become collaborators by uploading their own images and text. In the meantime,
+see the "Updates" section for samples of our preliminary visualizations and to learn more about our tools and processes.
+</p>
 </div>
 </div>
 </body>
-</html>

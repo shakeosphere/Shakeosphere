@@ -1,0 +1,58 @@
+body {
+background-image: url('../images/texture1.jpg');
+}
+
+a {
+color: #000;
+}
+
+/* NOTE: Need to make body auto-adjust in height */
+
+#body {
+width: 960px;
+height: 1000px;
+background-image: url('../images/atlasbackground.png');
+background-repeat: repeat;
+margin-left:auto;
+margin-right:auto;
+font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+#header {
+text-align: center;
+margin: -10px 0 20px 0;	
+}
+
+#topbannerlogo {
+border-bottom: 3px solid black;
+}
+
+#sidebar {
+float: left;
+padding: 14px;
+}
+
+#sidebar ul {
+list-style-type: none;
+margin-left: -26px;
+}
+
+#sidebar ul li {
+text-decoration: none;
+color: #000;
+font-size: 18px;
+font-weight: bold;
+padding-bottom: 16px;
+}
+
+#sidebar ul li a {
+text-decoration: none;
+}	
+
+#center {
+float: left;
+width: 680px;
+padding-right: 25px;
+padding-left: 12px;
+font-size: 1.06em;
+}

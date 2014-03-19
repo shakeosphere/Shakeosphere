@@ -5,27 +5,15 @@
 	<c:set var="guid" value="guest" scope="session" />
 </c:if>
 
-<div id="leftCol"><br />
-<h3><a href="index.jsp">Home</a></h3>
-	<ul>
-		<li><a href="about.jsp">About the Collaborative</a>
-		<li><a href="membership.jsp">Membership</a>
-	</ul>
-<h3>Federated Search Systems</h3>
+<div id="sidebar">
 <ul>
-	<li><a href="http://research.icts.uiowa.edu/polyglot">CTSAsearch</a>
-	<li><a href="http://direct2experts.org">DIRECT2Experts</a>
-</ul>
-<h3>Profiling Systems</h3>
-<ul>
-	<li><a href="http://icts.uiowa.edu/Loki">Loki</a>
-	<li><a href="http://profiles.catalyst.harvard.edu">Profiles</a>
-	<li><a href="http://info.scival.com/pure/merge">SciVal Experts</a>
-	<li><a href="http://vivoweb.org">VIVO</a>
-</ul>
-<h3>Admin</h3>
-<ul>
-	<li><a href="login.jsp">Login</a>
+<li> <a href="index.jsp"> Home </a> </li>
+<li> <a href="about.jsp"> About </a> </li>
+<li> <a href="updates.jsp"> Updates </a> </li>
+<li> <a href="grants.jsp"> Grants and Support </a> </li>
+<li> <a href="people.jsp"> People </a> </li>
+<li> <a href="projects.jsp"> Related Projects </a> </li>
 </ul>
 </div>
+
 <c:set var="menu.displayed">true</c:set>
