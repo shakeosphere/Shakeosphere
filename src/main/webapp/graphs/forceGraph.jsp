@@ -12,8 +12,8 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
 
-var width = 700,
-    height = 700,
+var width = 500,
+    height = 500,
     radius = 4;
 
 var color = d3.scale.category10();

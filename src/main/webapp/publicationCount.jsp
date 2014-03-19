@@ -6,22 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Shakeosphere</title>
-<style type="text/css" media="all">@import "resources/layout.css";</style>
+<style type="text/css" media="all">@import "resources/style.css";</style>
 </head>
 <body>
-
-<div id="roof" style="background-image: url(images/graph_small.png); height: 92px"><div> </div></div>
-<div id="content">
+<div id="body">
 <jsp:include page="header.jsp" flush="true" />
-
-
-<c:if test="${empty guid}">
-	<c:set var="guid" value="guest" scope="session" />
-</c:if>
 <jsp:include page="menu.jsp" flush="true">
 	<jsp:param name="caller" value="index" />
 </jsp:include>
-<div id="centerCol">
+<div id="center">
 <c:if test="${empty param.decade }">
 	<h1>Number of Publications by Decade</h1>
 </c:if>
@@ -42,7 +35,7 @@
 function renderChart() {
 
 var data = d3.csv.parse(d3.select('#csv').text());
-var valueLabelWidth = 40; // space reserved for value labels (right)
+var valueLabelWidth = 50; // space reserved for value labels (right)
 var barHeight = 20; // height of one bar
 var barLabelWidth = 100; // space reserved for bar labels
 var barLabelPadding = 5; // padding between bar and bar labels (left)
