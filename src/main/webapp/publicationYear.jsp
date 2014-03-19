@@ -17,12 +17,13 @@
 <div id="center">
 <c:if test="${not empty param.year }">
 	<h1>Publication relationships for <c:out value="${param.year }"/></h1>
-	<a href="publicationYear.jsp?year=<c:out value="${param.year - 1}"/>"><c:out value="${param.year - 1}"/></a> <a href="publicationYear.jsp?year=<c:out value="${param.year + 1}"/>"><c:out value="${param.year + 1}"/></a>
 </c:if>
 <c:if test="${empty param.label}">
+	<a href="publicationYear.jsp?year=<c:out value="${param.year - 1}"/>"><c:out value="${param.year - 1}"/></a> <a href="publicationYear.jsp?year=<c:out value="${param.year + 1}"/>"><c:out value="${param.year + 1}"/></a>
 	<br/><a href="publicationYear.jsp?year=<c:out value="${param.year }"/>&label=yes">Show node labels</a>
 </c:if>
 <c:if test="${not empty param.label}">
+	<a href="publicationYear.jsp?year=<c:out value="${param.year - 1}"/>&label=yes"><c:out value="${param.year - 1}"/></a> <a href="publicationYear.jsp?year=<c:out value="${param.year + 1}"/>&label=yes"><c:out value="${param.year + 1}"/></a>
 	<br/><a href="publicationYear.jsp?year=<c:out value="${param.year }"/>">Hide node labels</a>
 </c:if>
 	<div id="graph"></div>
