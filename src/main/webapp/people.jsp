@@ -49,6 +49,14 @@ Engineering program and was Director of Research and Development for the NASA-fu
 the systems developed as part of RBSE, received a NASA Group Achievement Award in 1998 from Johnson Space Center and was nominated in 1998 by JSC 
 for the NASA Software of the Year Award.
 </p>
+<h4> Christine M. Vivian </h4>
+<p>Christine M. Vivian is a graduate student in the School of Library and Information Science. She first learned to program 
+as a young child, an interest that was rekindled in graduate school, where she gained familiarity with several computer 
+languages. With a B.A. in English from Augustana College and her graduate work in Library and Information Science, she feels 
+at home in the digital humanities where she can combine her interests to help facilitate the creation of new knowledge and 
+new understandings. Her research focuses on conceptions of literacy and learning and the role of digital humanities in that 
+process.
+</p>
 </div>
 
 <div id="footer">
