@@ -8,6 +8,7 @@
 <div id="sidebar">
 <ul>
 <li> <a href="index.jsp"> Home </a> </li>
+<li> <a href="publicationCount.jsp"> Explore the Data </a> </li>
 <li> <a href="about.jsp"> About </a> </li>
 <li> <a href="updates.jsp"> Updates </a> </li>
 <li> <a href="grants.jsp"> Grants and Support </a> </li>
