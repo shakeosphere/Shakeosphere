@@ -12,7 +12,7 @@
 <div id="body">
 <jsp:include page="header.jsp" flush="true" />
 <jsp:include page="menu.jsp" flush="true">
-	<jsp:param name="caller" value="index" />
+	<jsp:param name="caller" value="visualization" />
 </jsp:include>
 <div id="center">
 <c:if test="${empty param.decade }">
@@ -86,7 +86,7 @@ labelsContainer.selectAll('text').data(data).enter().append('text')
 var barsContainer = chart.append('g')
   .attr('transform', 'translate(' + barLabelWidth + ',' + (gridLabelHeight + gridChartOffset) + ')'); 
 barsContainer.selectAll("rect").data(data).enter().append("rect")
-		.on("click", function(d) { window.open("publicationYear.jsp?year="+d.Name,"_self");})
+		.on("click", function(d) { window.open("publicationYear.jsp?year="+d.Name+"&count="+barValue(d),"_self");})
   .attr('y', y)
   .attr('height', yScale.rangeBand())
   .attr('width', function(d) { return x(barValue(d)); })

@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <style>
 .node {
 	stroke: #fff;
@@ -21,13 +24,22 @@ text {
 
 var width = 500,
     height = 500,
-    radius = 4;
+    radius = 4,
+    charge = -50,
+    linkDistance = 30;
+    
+<c:if test="${not empty param.charge}">
+	charge = -${param.charge};
+</c:if>
+<c:if test="${not empty param.linkDistance}">
+	linkDistance = ${param.linkDistance};
+</c:if>
 
-var color = d3.scale.category20();
+var color = d3.scale.category10();
 
 var force = d3.layout.force()
-    .charge(-50)
-    .linkDistance(${param.ld})
+	.charge(charge)
+	.linkDistance(linkDistance)
     .size([width, height]);
 
 var svg = d3.select("#graph").append("svg")

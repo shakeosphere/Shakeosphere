@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 
 <html>
@@ -26,19 +28,53 @@
 	<a href="publicationYear.jsp?year=<c:out value="${param.year - 1}"/>&label=yes"><c:out value="${param.year - 1}"/></a> <a href="publicationYear.jsp?year=<c:out value="${param.year + 1}"/>&label=yes"><c:out value="${param.year + 1}"/></a>
 	<br/><a href="publicationYear.jsp?year=<c:out value="${param.year }"/>">Hide node labels</a>
 </c:if>
+
+    <sql:setDataSource var="jdbc" driver="org.postgresql.Driver"
+     url="jdbc:postgresql://localhost/estc"
+     user="estc"  password="Shakeo"/>
+
+<sql:query var="nodes" dataSource="${jdbc}">
+		select count(*) from estc.pub_year where pubdate = ?::int ;
+		<sql:param value="${param.year}"/>
+</sql:query>
+<c:forEach items="${nodes.rows}" var="row" varStatus="rowCounter">
+	<fmt:parseNumber var="count" value="${row.count}"/>
+</c:forEach>
+<br/>Count: <c:out value="${count}"/>
+<c:set var="charge" value="50"/>
+<c:set var="linkDistance" value="30"/>
+<c:if test="${count < 10000 }">
+	<c:set var="charge" value="5"/>	
+	<c:set var="linkDistance" value="3"/>
+</c:if>
+<c:if test="${count < 2000 }">
+	<c:set var="charge" value="10"/>	
+	<c:set var="linkDistance" value="20"/>
+</c:if>
+<c:if test="${count < 500 }">
+	<c:set var="charge" value="50"/>	
+	<c:set var="linkDistance" value="30"/>
+</c:if>
+<c:if test="${count < 200 }">
+	<c:set var="charge" value="50"/>	
+	<c:set var="linkDistance" value="30"/>
+</c:if>
+
 	<div id="graph"></div>
 				<c:url var="encodedMapURL" value="publicationYearData.jsp">
 					<c:param name="year" value="${param.year}"/>
 				</c:url>
 		<c:if test="${empty param.label}">
 				<jsp:include page="graphs/forceGraph.jsp" flush="true">
-					<jsp:param name="ld" value="30" />
+					<jsp:param name="charge" value="${charge}" />
+					<jsp:param name="linkDistance" value="${500.0/count}" />
 					<jsp:param name="data_page" value="${encodedMapURL}" />
 				</jsp:include>
 		</c:if>
 		<c:if test="${not empty param.label}">
 				<jsp:include page="graphs/labelledForceGraph.jsp" flush="true">
-					<jsp:param name="ld" value="30" />
+					<jsp:param name="charge" value="${charge}" />
+					<jsp:param name="linkDistance" value="${500.0/count}" />
 					<jsp:param name="data_page" value="${encodedMapURL}" />
 				</jsp:include>
 		</c:if>
