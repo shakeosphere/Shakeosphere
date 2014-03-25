@@ -13,7 +13,7 @@
 <div id="body">
 <jsp:include page="header.jsp" flush="true" />
 <jsp:include page="menu.jsp" flush="true">
-	<jsp:param name="caller" value="index" />
+	<jsp:param name="caller" value="about" />
 </jsp:include>
 <div id="center">
 <h2> About Shakeosphere:

@@ -26,6 +26,7 @@ border-bottom: 3px solid black;
 }
 
 #sidebar {
+width: 205px;
 float: left;
 padding: 14px;
 }

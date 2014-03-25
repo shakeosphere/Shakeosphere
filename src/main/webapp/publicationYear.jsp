@@ -14,7 +14,7 @@
 <div id="body">
 <jsp:include page="header.jsp" flush="true" />
 <jsp:include page="menu.jsp" flush="true">
-	<jsp:param name="caller" value="index" />
+	<jsp:param name="caller" value="pubyear" />
 </jsp:include>
 <div id="center">
 <c:if test="${not empty param.year }">

@@ -20,6 +20,11 @@
 <li> <a href="people.jsp">People</a></li>
 <li> <a href="projects.jsp">Related Projects</a></li>
 </ul>
+<c:if test="${param.caller == 'visualization'}">
+<p>To explore this data further, click on a decade for a list of years within that decade, or click on a 
+bar to see a graph of the data from that year.
+</p>
+</c:if>
 </div>
 
 <c:set var="menu.displayed">true</c:set>

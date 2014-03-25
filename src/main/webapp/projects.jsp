@@ -14,7 +14,7 @@
 <img src="images/banner1.png" id="topbannerlogo" />
 </div>
 <jsp:include page="menu.jsp" flush="true">
-	<jsp:param name="caller" value="index" />
+	<jsp:param name="caller" value="projects" />
 </jsp:include>
 <h2>Projects</h2>
 <p>

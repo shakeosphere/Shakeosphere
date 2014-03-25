@@ -18,7 +18,7 @@
 <div id="body">
 <jsp:include page="header.jsp" flush="true" />
 <jsp:include page="menu.jsp" flush="true">
-	<jsp:param name="caller" value="index" />
+	<jsp:param name="caller" value="people" />
 </jsp:include>
 <div id="center">
 <h2> People:
