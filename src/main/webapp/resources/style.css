@@ -6,6 +6,10 @@ a {
 color: #000;
 }
 
+em {
+font-weight:bold;	
+}
+	
 #body {
 width: 960px;
 background-image: url('../images/atlasbackground.png');
@@ -54,4 +58,8 @@ width: 680px;
 padding-right: 25px;
 padding-left: 12px;
 font-size: 1.06em;
+}
+
+#explanation {
+padding-top: 3px;
 }
