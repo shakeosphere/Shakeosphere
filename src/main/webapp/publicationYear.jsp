@@ -29,11 +29,7 @@
 	<br/><a href="publicationYear.jsp?year=<c:out value="${param.year }"/>">Hide node labels</a>
 </c:if>
 
-    <sql:setDataSource var="jdbc" driver="org.postgresql.Driver"
-     url="jdbc:postgresql://localhost/estc"
-     user="estc"  password="Shakeo"/>
-
-<sql:query var="nodes" dataSource="${jdbc}">
+<sql:query var="nodes" dataSource="jdbc/Shakeosphere">
 		select count(*) from estc.pub_year where pubdate = ?::int ;
 		<sql:param value="${param.year}"/>
 </sql:query>

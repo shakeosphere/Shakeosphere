@@ -111,17 +111,13 @@ barsContainer.append("line")
 }
     </script>
     
-    <sql:setDataSource var="jdbc" driver="org.postgresql.Driver"
-     url="jdbc:postgresql://localhost/estc"
-     user="estc"  password="Shakeo"/>
-
 <c:if test="${empty param.decade }">
-<sql:query var="nodes" dataSource="${jdbc}">
+<sql:query var="nodes" dataSource="jdbc/Shakeosphere">
 		select (pubdate/10)*10 as name,count(*) from estc.pub_year group by 1 order by 1;
 </sql:query>
 </c:if>
 <c:if test="${not empty param.decade }">
-<sql:query var="nodes" dataSource="${jdbc}">
+<sql:query var="nodes" dataSource="jdbc/Shakeosphere">
 		select pubdate as name,count(*) from estc.pub_year where (pubdate/10)*10 = ?::int group by 1 order by 1;
 		<sql:param value="${param.decade }"/>
 </sql:query>
