@@ -28,6 +28,59 @@ bar to see a graph of the data from that year.
 </p>
 </div>
 </c:if>
+<script src="http://d3js.org/d3.v2.min.js"></script>
+<script>
+function drawColorKey() {
+	var w = 500;
+	var h = 500;
+	var colors = d3.scale.category10();
+	var legendtext = ["Author", "Publisher", "Printer", "Bookseller"];
+	var k = 0;
+	
+	var svg3 = d3.select("#legend")
+		.append("svg")
+		.attr("width", w)
+		.attr("height", h);
+	
+	svg3.selectAll("rect")
+		.data(legendtext)
+		.enter()
+		.append("rect")
+		.attr("width", 15)
+		.attr("height", 15)
+		.attr("x", 10)
+		.attr("y", function(d,k) {
+			if (k <= d.length) {
+				return 10+(25*k);
+				k++;
+			}
+		} )
+		.attr("fill", function (d) {
+			return colors(d);
+		});
+		
+	svg3.selectAll("text")
+		.data(legendtext)
+		.enter()
+		.append("text")
+		.text (function (d) {
+			return d;
+		})
+		.attr("x", 30)
+		.attr("y", function(d, k) {
+			if (k <= d.length) {
+				return 23+(25*k);
+				k++;
+			}
+		} );
+}
+</script>
+<c:if test="${param.caller == 'pubyear' }">
+<p id="legendtitle"><em>Color Key:</em></p>
+<div id="legend">	
+</div>
+<script>drawColorKey();</script>
+</c:if>
 </div>
 
 <c:set var="menu.displayed">true</c:set>
