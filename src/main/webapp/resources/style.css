@@ -1,5 +1,6 @@
 body {
 background-image: url('../images/texture1.jpg');
+margin-top: 0px;
 }
 
 a {
@@ -22,7 +23,7 @@ overflow: hidden;
 
 #header {
 text-align: center;
-margin: -10px 0 20px 0;	
+margin: 0 0 20px 0;	
 }
 
 #topbannerlogo {
