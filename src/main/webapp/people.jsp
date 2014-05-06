@@ -57,9 +57,7 @@ at home in the digital humanities where she can combine her interests to help fa
 new understandings. Her research focuses on conceptions of literacy and learning and the role of digital humanities in that 
 process.
 </p>
-</div>
-
-<div id="footer">
+<jsp:include page="footer.jsp" flush="true" />
 </div>
 </div>
 </body>

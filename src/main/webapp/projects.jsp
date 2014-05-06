@@ -10,15 +10,23 @@
 </head>
 <body>
 <div id="body">
-<div id="header">
 <img src="images/banner1.png" id="topbannerlogo" />
-</div>
 <jsp:include page="menu.jsp" flush="true">
 	<jsp:param name="caller" value="projects" />
 </jsp:include>
-<h2>Projects</h2>
+<div id="center">
+<h2>Related Projects</h2>
 <p>
-Links to related projects coming soon.
+Shakeosphere has collaborated with and learned from the following partners, all of which are working in their own ways to 
+map, visualize, and analyze early modern social networks. Please visit their sites to learn more: 
 </p>
+<p>
+<a href="http://mapoflondon.uvic.ca/">The Map of Early Modern London, University of Victoria</a><br />
+<a href="http://sixdegreesoffrancisbacon.com/">Six Degrees of Francis Bacon, Carnegie Mellon University and Georgetown</a><br />
+<a href="https://www.grinnell.edu/users/leejamesj">The Global Renaissance</a><br />
+</p>
+<jsp:include page="footer.jsp" flush="true" />
+</div>
+</div>
 </body>
 </html>

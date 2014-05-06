@@ -46,9 +46,7 @@ March 5, 2014
 <p>
 Shakeosphere now has a Twitter feed! Please feel free to follow along as more information about the project becomes available.
 </p>
-</div>
-
-<div id="footer">
+<jsp:include page="footer.jsp" flush="true" />
 </div>
 </div>
 </body>

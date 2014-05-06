@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Shakeosphere - Grants</title>
+<title>Shakeosphere - Contact</title>
 <style type="text/css" media="all">@import "resources/style.css";</style>
 </head>
 <body>
@@ -15,12 +15,10 @@
 	<jsp:param name="caller" value="index" />
 </jsp:include>
 <div id="center">
-<h2>Grants</h2>
+<h2>Contact</h2>
 <p>
-Shakeosphere has received funding  from the University of Iowa, Office of the Vice President for Research and Economic 
-Development and the <a href="http://thestudio.uiowa.edu/wp">Digital Studio for the Public Humanities</a>
+<a href="mailto:blaine-greteman@uiowa.edu" target="_top">blaine-greteman@uiowa.edu</a> or tweet to us <a href="https://twitter.com/shakeosphere">@Shakeosphere</a>
 </p>
-<img src="images/Studio_websitelogo.png" />
 <jsp:include page="footer.jsp" flush="true" />
 </div>
 </div>

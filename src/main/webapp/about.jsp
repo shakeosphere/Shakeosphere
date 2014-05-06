@@ -19,8 +19,9 @@
 <h2> About Shakeosphere:
 </h2>
 <p >
-Shakeosphere is a digital research and teaching tool that will allow users to search, analyze, and contribute to a visualization of the early 
-modern print and manuscript network. Read on to learn more about our goals, our data sources, and our technology. 
+Shakeosphere is a digital research and teaching tool that allows users to search, analyze, and contribute to a visualization 
+of the early modern print and manuscript network. Read on to learn more about our goals, our data sources, and our 
+technology.  
 <br />
 <br />
 Goals:
@@ -58,9 +59,7 @@ Technologies:
 We are using the D3.js Javascript library to build an interface that will allow users to produce and manipulate visualizations. We use the 
 relational database PostgreSQL as our primary data management tool. 
 </p>
-</div>
-
-<div id="footer">
+<jsp:include page="footer.jsp" flush="true" />
 </div>
 </div>
 </body>

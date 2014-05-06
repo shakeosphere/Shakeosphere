@@ -19,6 +19,7 @@
 <li> <a href="grants.jsp">Grants and Support</a></li>
 <li> <a href="people.jsp">People</a></li>
 <li> <a href="projects.jsp">Related Projects</a></li>
+<li> <a href="contact.jsp">Contact</a></li>
 </ul>
 <c:if test="${param.caller == 'visualization'}">
 <div id="explanation">
