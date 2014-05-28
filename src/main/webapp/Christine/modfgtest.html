@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>D3: Force layout</title>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<style type="text/css">
+		#slider {
+			width: 560px;
+		}
+		
+		.node:not(:hover) .nodetext {
+			display: none;
+		}
+		
+	</style>
+</head>	
+<body>
+	<div>
+	<table>
+		<tr>
+			<td> Begin year:
+			</td>
+			<td> End year:
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<select id="input1">
+				
+				<option value="2010">2010</option>
+				<option value="2011">2011</option>
+			</td>
+			<td>
+				<select id="input2">
+				
+				<option value="2011">2011</option>
+				<option value="2012">2012</option>
+				
+			</td>
+		</tr>
+	</table>
+	<input id="button" type="button" value="Update/Animate" onclick="updateSlider();">
+	</div>
+	<div id="selector" style="width:600; padding-left:20px; padding-right:20px">
+	<input type="range" id="slider" min="2010" max="2012" value="2010" step="1" />
+	<span id="sliderYear"></span>
+	</div>
+	<div id="legend">
+	</div>
+	<div id="graph">
+	</div>
+	<script type="text/javascript">
+
+
+		//var slider=d3.select("#slider");
+		
+		//Original data
+		var dataset = {
+			nodes: [
+				{ name: "Adam" },
+				{ name: "Bob" },
+				{ name: "Carrie" },
+				{ name: "Donovan" },
+				{ name: "Edward" },
+				{ name: "Felicity" },
+				{ name: "George" },
+				{ name: "Hannah" },
+				{ name: "Iris" },
+				{ name: "Jerry" }
+			],
+			links: {
+				"2010":
+					[
+						{ source: 0, target: 1, value: 4},
+						{ source: 0, target: 2, value: 5},
+						{ source: 0, target: 3, value: 2},
+						{ source: 0, target: 4, value: 9},
+						{ source: 1, target: 5, value: 2},
+						{ source: 2, target: 5, value: 1},
+						{ source: 2, target: 5, value: 4},
+						{ source: 3, target: 4, value: 8},
+						{ source: 5, target: 8, value: 5},
+						{ source: 5, target: 9, value: 7},
+						{ source: 6, target: 7, value: 6},
+						{ source: 7, target: 8, value: 4},
+						{ source: 8, target: 9, value: 2}
+					],
+				
+				"2011":
+					[
+						{ source: 0, target: 5, value: 4},
+						{ source: 0, target: 2, value: 5},
+						{ source: 0, target: 4, value: 9},
+						{ source: 1, target: 5, value: 2},
+						{ source: 2, target: 5, value: 1},
+						{ source: 2, target: 6, value: 4},
+						{ source: 3, target: 4, value: 8},
+						{ source: 5, target: 6, value: 5},
+						{ source: 5, target: 8, value: 7},
+						{ source: 6, target: 9, value: 6},
+						{ source: 7, target: 8, value: 4},
+						{ source: 8, target: 9, value: 2}
+					],
+					
+				"2012":
+					[
+						{ source: 0, target: 4, value: 4},
+						{ source: 2, target: 3, value: 5},
+						{ source: 0, target: 3, value: 9},
+						{ source: 1, target: 5, value: 2},
+						{ source: 2, target: 5, value: 1},
+						{ source: 3, target: 6, value: 4},
+						{ source: 3, target: 4, value: 8},
+						{ source: 5, target: 6, value: 5},
+						{ source: 5, target: 8, value: 7},
+						{ source: 6, target: 8, value: 6},
+						{ source: 7, target: 8, value: 4},
+						{ source: 8, target: 2, value: 2}
+					]	
+			}
+		};
+		
+		function animateSlider() {
+			timer = setInterval("play()", 2000);
+		}
+		function stopAnimation() {
+			clearInterval(timer);
+			timer = 0;
+		}
+		function updateSlider() {
+			//Remove the existing year scale to clear previous timeline info
+			d3.select("#yearscale")
+				.remove();
+				
+			//Assign variables
+			var beginyear = parseFloat(document.getElementById("input1").value);
+			var endyear = parseFloat(document.getElementById("input2").value);
+			var padding = 20;
+			var oldMin = document.getElementById("slider").min;
+			var sliderVal = document.getElementById("slider").value;
+			
+			//alert(beginyear);
+			if (beginyear != oldMin) {
+				//alert(beginyear);
+				//alert(oldMin);
+				document.getElementById("slider").min = beginyear;
+				document.getElementById("slider").value = beginyear;
+				//alert(document.getElementById("slider").value);
+			}
+			document.getElementById("slider").min = beginyear;
+			document.getElementById("slider").max = endyear;
+			var range = (endyear - beginyear) + 1;
+			
+			//alert(range);
+			
+			var sliderdata = [];
+			for (var i=0; i<range; i++) {
+				var data = beginyear + i;
+				sliderdata.push(data);
+			}
+
+			//Draw year scale for the slider
+			var yearScale = d3.scale.linear().domain([beginyear, endyear]).range([padding, 600-padding]);
+			var svg1 = d3.select("#legend")
+				.append("svg")
+				.attr("width", 600)
+				.attr("height", 25)
+				.attr("id", "yearscale");
+			svg1.selectAll("text")
+				.data(sliderdata)
+				.enter()
+				.append("text")
+				.text(function(d) {
+					return d;
+				})
+				.attr("x", function (d) {
+					return yearScale(d);
+				})
+				.attr("y", 15)
+				.attr("text-anchor", "middle");
+
+			animateSlider();
+			start();
+		}
+		
+		function play() {
+			var endyear = parseFloat(document.getElementById("input2").value);
+			var v = document.getElementById("slider").value;
+			
+			if(v < endyear){
+				v++;
+				document.getElementById("slider").value = v;
+				start();
+			} else {
+				stopAnimation();
+			}
+			
+			//alert("The slider value is " + document.getElementById("slider").value);
+		}
+
+		var width = 960,
+			height = 500;
+			
+		var v = document.getElementById("slider").value;	
+			
+		//Define color scale
+		var colors = d3.scale.category10();
+	
+		//Define force layout
+		var force = d3.layout.force()
+			.nodes(dataset.nodes)
+			.links(dataset.links[v])
+			.charge(-400)
+			.linkDistance(120)
+			.size([width, height])
+			.on("tick", tick);
+		
+		var svg2 = d3.select("#graph").append("svg")
+			.attr("width", width)
+			.attr("height", height);
+		
+		var node = svg2.selectAll(".node"),
+			link = svg2.selectAll(".link");
+			
+		
+		function start() {
+			var v = document.getElementById("slider").value;
+			alert(v);
+			link = link.data(force.links(), function(d) { return d.source + "-" + d.target; });
+			alert(dataset.links[v][0]["source"]);
+			link.enter().insert("line", ".node")
+				.attr("class", "link")
+				.style("stroke", "#ccc")
+				.style("stroke-width", function(d) { return(d.value); });
+			link.exit().remove();
+			
+			node = node.data(force.nodes(), function(d) { return d.name;});
+			node.enter().append("g")
+				.attr("class", "node")
+				.style("fill", function(d, i) {
+					return colors(i);
+				})	
+				.on("mouseover", function() {
+					d3.select(this).select("circle").transition() 
+						.duration(750) 
+						.attr("r", 20);
+					d3.select(this).select("text").transition()
+						.duration(750)
+						.attr("x", 13)
+						.style("stroke-width", ".5px")
+						.style("font", "22px serif")
+						.style("opacity", 1);
+				}) 
+				.on("mouseout", function() {
+					d3.select(this).select("circle").transition() 
+						.duration(750) 
+						.attr("r", 10);	
+				})
+				.call(force.drag);
+			
+			node.append("circle")
+				.attr("class", function(d) { return "node " + d.name; })
+				.attr("r", 10);
+			
+			node.append("svg:text")
+				.attr("class", "nodetext")
+				.attr("dx", 12)
+				.attr("dy", ".35em")
+				.text(function(d) {
+					return d.name
+				});	
+				
+			node.exit().remove();
+			
+			force.start();
+		}
+		
+		function tick() {
+			var v = document.getElementById("slider").value;
+		
+			node.attr("transform", function(d) {
+						return "translate(" + d.x + "," + d.y + ")";
+			})
+			
+			link.attr("x1", function(d) { return d.source.x; })
+				.attr("y1", function(d) { return d.source.y; })
+				.attr("x2", function(d) { return d.target.x; })
+				.attr("y2", function(d) { return d.target.y; });
+		}
+		
+	</script>
+</body>
+</html>	
