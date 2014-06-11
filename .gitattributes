@@ -3,10 +3,12 @@
 /.project -text
 .settings/.jsdtscope -text
 .settings/org.eclipse.jdt.core.prefs -text
+.settings/org.eclipse.m2e.core.prefs -text
 .settings/org.eclipse.wst.common.component -text
 .settings/org.eclipse.wst.common.project.facet.core.xml -text
 .settings/org.eclipse.wst.jsdt.ui.superType.container -text
 .settings/org.eclipse.wst.jsdt.ui.superType.name -text
+.settings/org.eclipse.wst.validation.prefs -text
 .settings/org.maven.ide.eclipse.prefs -text
 /pom.xml -text
 src/main/java/Shakeosphere/Demo.java -text
@@ -37,10 +39,14 @@ src/main/webapp/index.jsp -text
 src/main/webapp/membership.jsp -text
 src/main/webapp/menu.jsp -text
 src/main/webapp/people.jsp -text
+src/main/webapp/persons/person.jsp -text
+src/main/webapp/persons/persons.jsp -text
 src/main/webapp/projects.jsp -text
 src/main/webapp/publicationCount.jsp -text
 src/main/webapp/publicationYear.jsp -text
 src/main/webapp/publicationYearData.jsp -text
+src/main/webapp/publications/publication.jsp -text
+src/main/webapp/publications/publications.jsp -text
 src/main/webapp/resources/layout.css -text
 src/main/webapp/resources/style.css -text
 src/main/webapp/updates.jsp -text

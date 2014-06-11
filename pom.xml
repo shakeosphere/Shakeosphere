@@ -109,6 +109,11 @@
         	<type>jar</type>
         	<scope>compile</scope>
         </dependency>
+        <dependency>
+        	<groupId>ESTCTagLib</groupId>
+        	<artifactId>ESTCTagLib</artifactId>
+        	<version>0.0.1-SNAPSHOT</version>
+        </dependency>
   </dependencies>
   <build>
   	<plugins>
@@ -134,14 +139,6 @@
 		 <property><name>jsp.file.location</name><value>${basedir}/src/main/webapp/</value></property>
 		</props>
         </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>WebApp</goal>
-            </goals>
-
-          </execution>
-        </executions>
      </plugin>
       <plugin>
 	      <groupId>org.apache.maven.plugins</groupId>
