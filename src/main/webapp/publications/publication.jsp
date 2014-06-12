@@ -13,7 +13,7 @@
 <div id="body">
 <jsp:include page="../header.jsp" flush="true" />
 <jsp:include page="../menu.jsp" flush="true">
-	<jsp:param name="caller" value="person" />
+	<jsp:param name="caller" value="publication" />
 </jsp:include>
 <div id="center">
 <estc:publication ID="${param.id}">

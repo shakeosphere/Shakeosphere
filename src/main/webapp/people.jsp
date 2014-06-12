@@ -26,7 +26,7 @@
 <h4> Blaine Greteman
 </h4>
 <p>
-Blaine Greteman an assistant professor of English at the University of Iowa. He specializes in the literature and culture of Shakespeare's England, 
+Blaine Greteman is an assistant professor of English at the University of Iowa. He specializes in the literature and culture of Shakespeare's England, 
 and his research explores questions of subjectivity and agency, especially the way those questions are shaped by literature and the material production 
 and transmission of texts.
 <br />
@@ -38,16 +38,15 @@ His book, <strong>The Poetics and Politics of Youth in Milton's England</strong>
 <h4> David Eichmann
 </h4>
 <p>
-David Eichmann is an associate professor and Director of the School of Library and Information Science at the University of Iowa. His research 
-addresses a range of data-intensive issues, from named-entity extraction in the biomedical literature to video search and retrieval. Much of this 
-work has required the engineering of information architectures to function on large-scale clusters backed by high-performance database engines.
-<br />
-<br />
-Eichmann received his Ph.D. in Computer Science from The University of Iowa in 1989, with a dissertation in database theory. He has been on the 
-faculty at Seattle University, West Virginia University and most recently at the University of Houston - Clear Lake, where he chaired the Software 
-Engineering program and was Director of Research and Development for the NASA-funded Repository Based Software Engineering project. MORE, one of 
-the systems developed as part of RBSE, received a NASA Group Achievement Award in 1998 from Johnson Space Center and was nominated in 1998 by JSC 
-for the NASA Software of the Year Award.
+David Eichmann is Director and Associate Professor in the School of Library and Information Science at the University of Iowa and
+Interim Director of Information Science in the Iowa Graduate Program in Informatics.  He co-chairs the Research Networking Collaborative
+(previously known as the Research Networking Affinity Group in the Clinical and Translational Science Award Consortium).  He was Director
+of Biomedical Informatics in the Institute for Clinical and Translational Science from 2006 to 2012.  Prior to returning to Iowa, he chaired
+the Software Engineering Program at the University of Houston - Clear Lake, where he was also Director of Research and Development for the
+NASA-funded Repository-Based Software Engineering project. His RBSE team developed the MORE repository system, which received a NASA Group
+Achievement Award in 1998 from Johnson Space Center and was nominated in 1998 by JSC for the NASA Software of the Year Award. His current
+research interests involve exploring the boundaries between traditional approaches to research data warehousing, information retrieval and
+extraction, and semantic web technologies.
 </p>
 <h4> Christine M. Vivian </h4>
 <p>Christine M. Vivian is a graduate student in the School of Library and Information Science. She first learned to program 

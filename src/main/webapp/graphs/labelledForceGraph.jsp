@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="util" uri="http://icts.uiowa.edu/tagUtil"%>
 
 <style>
 .node {
@@ -63,7 +64,7 @@ d3.json("${param.data_page}", function(error, graph) {
       .data(graph.nodes)
     .enter().append("g")
       .attr("class", "node")
-		.on("dblclick", function(d) { window.open(d.url,"_self");})
+		.on("dblclick", function(d) { window.open("/Shakeosphere/persons/person.jsp?pid="+d.url,"_self");})
        .call(force.drag);
   
   node.append("circle")
