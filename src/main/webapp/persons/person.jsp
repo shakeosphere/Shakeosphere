@@ -1,4 +1,3 @@
-<%@ page errorPage="../error/error.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="estc" uri="http://icts.uiowa.edu/ESTCTagLib"%>
 
@@ -20,55 +19,53 @@
 <estc:person pid="${param.pid}">
 <h2><estc:personFirstName/> <estc:personLastName/></h2>
 
-<c:if test="${estc:personHasAuthor(tag_person.pid)}">
+<c:if test="${not empty param.year}">
+	<a href="person.jsp?pid=<c:out value="${param.pid}"/>&year=<c:out value="${param.year - 1}"/>"><c:out value="${param.year - 1}"/></a> <a href="person.jsp?pid=<c:out value="${param.pid}"/>&year=<c:out value="${param.year + 1}"/>"><c:out value="${param.year + 1}"/></a>
+	(<a href="person.jsp?pid=<c:out value="${param.pid}"/>">show all</a>)
+	<h4>Activity for ${param.year}</h4>
+</c:if>
+
+<c:if test="${estc:personHasAuthorByYear(tag_person.pid, param.year)}">
 	<h3>As Author</h3>
 	<ul>
-	<estc:foreachAuthor var="x">
-		<estc:author>
-			<estc:publication ID="${tag_author.ID}">
-				<li><estc:publicationDate1/>: <a href="../publications/publication.jsp?id=<estc:publicationID/>"><estc:publicationTitle/></a>
-			</estc:publication>
-		</estc:author>
-	</estc:foreachAuthor>
+	<estc:foreachAuthorByYear var="pubID" year="${param.year}">
+		<estc:publication ID="${pubID}">
+			<li><estc:publicationDate1/>: <a href="../publications/publication.jsp?id=<estc:publicationID/>"><estc:publicationTitle/></a>
+		</estc:publication>
+	</estc:foreachAuthorByYear>
 	</ul>
 </c:if>
 
-<c:if test="${estc:personHasPublisher(tag_person.pid)}">
+<c:if test="${estc:personHasPublisherByYear(tag_person.pid, param.year)}">
 	<h3>As Publisher</h3>
 	<ul>
-	<estc:foreachPublisher var="x">
-		<estc:publisher>
-			<estc:publication ID="${tag_publisher.ID}">
-				<li><estc:publicationDate1/>: <a href="../publications/publication.jsp?id=<estc:publicationID/>"><estc:publicationTitle/></a>
-			</estc:publication>
-		</estc:publisher>
-	</estc:foreachPublisher>
+	<estc:foreachPublisherByYear var="pubID" year="${param.year}">
+		<estc:publication ID="${pubID}">
+			<li><estc:publicationDate1/>: <a href="../publications/publication.jsp?id=<estc:publicationID/>"><estc:publicationTitle/></a>
+		</estc:publication>
+	</estc:foreachPublisherByYear>
 	</ul>
 </c:if>
 
-<c:if test="${estc:personHasPrinter(tag_person.pid)}">
+<c:if test="${estc:personHasPrinterByYear(tag_person.pid, param.year)}">
 	<h3>As Printer</h3>
 	<ul>
-	<estc:foreachPrinter var="x">
-		<estc:printer>
-			<estc:publication ID="${tag_printer.ID}">
-				<li><estc:publicationDate1/>: <a href="../publications/publication.jsp?id=<estc:publicationID/>"><estc:publicationTitle/></a>
-			</estc:publication>
-		</estc:printer>
-	</estc:foreachPrinter>
+	<estc:foreachPrinterByYear var="pubID" year="${param.year}">
+		<estc:publication ID="${pubID}">
+			<li><estc:publicationDate1/>: <a href="../publications/publication.jsp?id=<estc:publicationID/>"><estc:publicationTitle/></a>
+		</estc:publication>
+	</estc:foreachPrinterByYear>
 	</ul>
 </c:if>
 
-<c:if test="${estc:personHasBookseller(tag_person.pid)}">
+<c:if test="${estc:personHasBooksellerByYear(tag_person.pid, param.year)}">
 	<h3>As Bookseller</h3>
 	<ul>
-	<estc:foreachBookseller var="x">
-		<estc:bookseller>
-			<estc:publication ID="${tag_bookseller.ID}">
-				<li><estc:publicationDate1/>: <a href="../publications/publication.jsp?id=<estc:publicationID/>"><estc:publicationTitle/></a>
-			</estc:publication>
-		</estc:bookseller>
-	</estc:foreachBookseller>
+	<estc:foreachBooksellerByYear var="pubID" year="${param.year}">
+		<estc:publication ID="${pubID}">
+			<li><estc:publicationDate1/>: <a href="../publications/publication.jsp?id=<estc:publicationID/>"><estc:publicationTitle/></a>
+		</estc:publication>
+	</estc:foreachBooksellerByYear>
 	</ul>
 </c:if>
 

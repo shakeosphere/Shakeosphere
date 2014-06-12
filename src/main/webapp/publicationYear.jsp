@@ -65,6 +65,7 @@
 					<jsp:param name="charge" value="${charge}" />
 					<jsp:param name="linkDistance" value="${500.0/count}" />
 					<jsp:param name="data_page" value="${encodedMapURL}" />
+					<jsp:param name="year" value="${param.year}" />
 				</jsp:include>
 		</c:if>
 		<c:if test="${not empty param.label}">
@@ -72,6 +73,7 @@
 					<jsp:param name="charge" value="${charge}" />
 					<jsp:param name="linkDistance" value="${500.0/count}" />
 					<jsp:param name="data_page" value="${encodedMapURL}" />
+					<jsp:param name="year" value="${param.year}" />
 				</jsp:include>
 		</c:if>
 <c:if test="${not empty param.year }">
