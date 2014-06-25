@@ -19,7 +19,7 @@
 <estc:publication ID="${param.id}">
 	<h2><estc:publicationTitle/></h2>
 	<table>
-		<tr><th>Publication&nbsp;Date</th><td><estc:publicationDate1/></td></tr>
+		<tr><th>Publication&nbsp;Date</th><td><a href="../publicationYear.jsp?year=<estc:publicationDate1/>"><estc:publicationDate1/></a></td></tr>
 		<tr><th>Remainder</th><td><estc:publicationRemainder/></td></tr>
 		<tr><th>Extent</th><td><estc:publicationExtent/></td></tr>
 		<tr><th>Location</th><td><estc:publicationPubLocation/></td></tr>

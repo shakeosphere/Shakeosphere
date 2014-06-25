@@ -7,6 +7,9 @@
         <dependent-module archiveName="ESTCTagLib-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ESTCTagLib/ESTCTagLib">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="LuceneTagLib-0.0.8-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/LuceneTagLib/LuceneTagLib">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/${artifactId}/target/classes"/>
         <property name="context-root" value="Shakeosphere"/>
     </wb-module>

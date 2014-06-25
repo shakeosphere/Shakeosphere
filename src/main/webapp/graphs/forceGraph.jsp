@@ -58,7 +58,7 @@ d3.json("${param.data_page}", function(error, graph) {
       .attr("class", "node")
       .attr("r", function(d) { return d.score; })
       .style("fill", function(d) { return color(d.group); })
-		.on("dblclick", function(d) { window.open("/Shakeosphere/persons/person.jsp?pid="+d.url+"&year=${param.year}","_self");})
+		.on("dblclick", function(d) { window.open("persons/person.jsp?pid="+d.url+"&year=${param.year}","_self");})
        .call(force.drag);
 
   node.append("title")

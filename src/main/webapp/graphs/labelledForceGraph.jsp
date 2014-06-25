@@ -64,7 +64,7 @@ d3.json("${param.data_page}", function(error, graph) {
       .data(graph.nodes)
     .enter().append("g")
       .attr("class", "node")
-		.on("dblclick", function(d) { window.open("/Shakeosphere/persons/person.jsp?pid="+d.url+"&year=${param.year}","_self");})
+		.on("dblclick", function(d) { window.open("persons/person.jsp?pid="+d.url+"&year=${param.year}","_self");})
        .call(force.drag);
   
   node.append("circle")

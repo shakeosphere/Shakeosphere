@@ -36,7 +36,13 @@
 <c:forEach items="${nodes.rows}" var="row" varStatus="rowCounter">
 	<fmt:parseNumber var="count" value="${row.count}"/>
 </c:forEach>
-<br/>Count: <c:out value="${count}"/>
+<br/>Count: <c:out value="${count}"/><br/>
+
+<c:if test="${empty param.label}">
+Hover over a node to view that person's name.
+</c:if>
+Double click on a node to view additional information about that person.
+
 <c:set var="charge" value="50"/>
 <c:set var="linkDistance" value="30"/>
 <c:if test="${count < 10000 }">

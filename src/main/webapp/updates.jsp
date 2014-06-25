@@ -41,6 +41,28 @@ float: right;
 <h2> News and Updates:
 </h2>
 <p id="date">
+June 25, 2014
+</p>
+<p>
+Full text search has been added.  This includes the ability to do boolean <i>and</i> and <i>or</i>, and grouping using parentheses.
+Search results currently only include publications.
+</p>
+<p id="date">
+June 24, 2014
+</p>
+<p>
+The public site at <a href="http://shakeosphere.lib.uiowa.edu">http://shakeosphere.lib.uiowa.edu</a> goes live.
+</p>
+<p id="date">
+June 12, 2014
+</p>
+<p>
+Textual navigation of persons and publications is now supported.  Double clicking on a node in the force graph of
+relationships takes you to the corresponding page for that person, qualified by the current year being displayed
+by the force graph.  You can then use the hyperlinks at the top to move forward and backward in time for that person,
+or just show everything about them.
+</p>
+<p id="date">
 March 5, 2014
 </p>
 <p>
