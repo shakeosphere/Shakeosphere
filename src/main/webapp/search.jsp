@@ -34,7 +34,7 @@
 		<c:set var="rewrittenQuery" value="${fn:replace(rewrittenQuery,'|', ' | ')}"/>
 		<c:set var="rewrittenQuery" value="${fn:replace(rewrittenQuery,'!', ' ! ')}"/>
 		<h3>Search Results:	<c:out value="${rewrittenQuery}" /></h3>
-		<lucene:search lucenePath="/Users/eichmann/estc/pubIndex" label="content" queryParserName="boolean" queryString="${rewrittenQuery}">
+		<lucene:search lucenePath="/local/libdata/estc/pubIndex" label="content" queryParserName="boolean" queryString="${rewrittenQuery}">
 			<p>
 				Result Count:
 				<lucene:count />
