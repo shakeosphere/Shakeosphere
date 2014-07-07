@@ -41,6 +41,13 @@ float: right;
 <h2> News and Updates:
 </h2>
 <p id="date">
+July 7, 2014
+</p>
+<p>
+A first implementation of recognizing gazetteer entries from the <a href="http://mapoflondon.uvic.ca">Map of Early Modern London project</a>.
+This implementation does simple string matching against the various tags in the ESTC MARC record.
+</p>
+<p id="date">
 June 25, 2014
 </p>
 <p>
