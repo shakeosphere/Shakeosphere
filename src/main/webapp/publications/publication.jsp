@@ -86,6 +86,28 @@
 		</ul>
 		</estc:record>
 	</c:if>
+	
+	<c:if test="${estc:recordHasMatch(param.id)}">
+		<h4>Location(s)</h4>
+		<estc:record ID="${param.id}">
+		<ul>
+		<estc:foreachMatch var="x">
+			<estc:match>
+				<estc:gazetteer moemlId="${tag_match.moemlId}">
+					<c:if test="${tag_match.seqnum == 0}">
+						<li><a href="http://mapoflondon.uvic.ca/<estc:gazetteerMoemlId/>.htm"><estc:gazetteerMoemlId/></a> - <a href="../MoEML/gazetteer.jsp?id=<estc:gazetteerMoemlId/>"><estc:gazetteerTitle/></a>
+					</c:if>
+					<c:if test="${tag_match.seqnum > 0}">
+						<estc:variant seqnum="${tag_match.seqnum}">
+							<li><a href="http://mapoflondon.uvic.ca/<estc:gazetteerMoemlId/>.htm"><estc:gazetteerMoemlId/></a> - <a href="../MoEML/gazetteer.jsp?id=<estc:gazetteerMoemlId/>"><estc:gazetteerTitle/></a> - <estc:variantVariant/>
+						</estc:variant>
+					</c:if>
+				</estc:gazetteer>
+			</estc:match>
+		</estc:foreachMatch>
+		</ul>
+		</estc:record>
+	</c:if>
 </estc:publication>
 <jsp:include page="../footer.jsp" flush="true" />
 </div>

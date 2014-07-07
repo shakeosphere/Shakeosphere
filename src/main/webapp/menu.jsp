@@ -25,6 +25,11 @@
 		<li> <a href="<util:applicationRoot/>/publications/publications.jsp">Full Publication List (really big)</a>
 	</ul>
 </c:if>
+<c:if test="${param.caller == 'gazetteer'}">
+	<ul>
+		<li> <a href="<util:applicationRoot/>/MoEML/gazetteerList.jsp">Full Gazetteer List</a>
+	</ul>
+</c:if>
 </li>
 <li> <a href="<util:applicationRoot/>/about.jsp">About</a></li>
 <li> <a href="<util:applicationRoot/>/updates.jsp">Updates</a></li>
