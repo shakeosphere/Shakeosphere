@@ -19,7 +19,7 @@
 <div id="center">
 <h2>MoEML References in Shakeosphere</h2>
 <estc:gazetteer moemlId="${param.id}">
-<h2><a href="http://mapoflondon.uvic.ca/<estc:gazetteerMoemlId/>.htm"><estc:gazetteerMoemlId/></a>: <estc:gazetteerTitle/></h2>
+<h2><a href="gazetteerClick.jsp?id=<estc:gazetteerMoemlId/>"><estc:gazetteerMoemlId/></a>: <estc:gazetteerTitle/></h2>
 
 <ul>
 <estc:foreachMatch var="x">

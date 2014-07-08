@@ -95,11 +95,11 @@
 			<estc:match>
 				<estc:gazetteer moemlId="${tag_match.moemlId}">
 					<c:if test="${tag_match.seqnum == 0}">
-						<li><a href="http://mapoflondon.uvic.ca/<estc:gazetteerMoemlId/>.htm"><estc:gazetteerMoemlId/></a> - <a href="../MoEML/gazetteer.jsp?id=<estc:gazetteerMoemlId/>"><estc:gazetteerTitle/></a>
+						<li><a href="../MoEML/gazetteerClick.jsp?id=<estc:gazetteerMoemlId/>"><estc:gazetteerMoemlId/></a> - <a href="../MoEML/gazetteer.jsp?id=<estc:gazetteerMoemlId/>"><estc:gazetteerTitle/></a>
 					</c:if>
 					<c:if test="${tag_match.seqnum > 0}">
 						<estc:variant seqnum="${tag_match.seqnum}">
-							<li><a href="http://mapoflondon.uvic.ca/<estc:gazetteerMoemlId/>.htm"><estc:gazetteerMoemlId/></a> - <a href="../MoEML/gazetteer.jsp?id=<estc:gazetteerMoemlId/>"><estc:gazetteerTitle/></a> - <estc:variantVariant/>
+							<li><a href="../MoEML/gazetteerClick.jsp?id=<estc:gazetteerMoemlId/>"><estc:gazetteerMoemlId/></a> - <a href="../MoEML/gazetteer.jsp?id=<estc:gazetteerMoemlId/>"><estc:gazetteerTitle/></a> - <estc:variantVariant/>
 						</estc:variant>
 					</c:if>
 				</estc:gazetteer>
