@@ -89,11 +89,6 @@
 	</dependency>
 		
         <dependency>
-        	<groupId>edu.uiowa.icts.taglib</groupId>
-        	<artifactId>UtilTagLib</artifactId>
-        	<version>1.0.3-SNAPSHOT</version>
-        </dependency>
-        <dependency>
         	<groupId>GraphTagLib</groupId>
         	<artifactId>GraphTagLib</artifactId>
         	<version>0.0.1-SNAPSHOT</version>
@@ -116,6 +111,11 @@
         	<groupId>edu.uiowa.icts.taglib</groupId>
         	<artifactId>LuceneTagLib</artifactId>
         	<version>0.0.8-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+        	<groupId>edu.uiowa.icts.taglib</groupId>
+        	<artifactId>UtilTagLib</artifactId>
+        	<version>1.0.4-SNAPSHOT</version>
         </dependency>
   </dependencies>
   <build>
