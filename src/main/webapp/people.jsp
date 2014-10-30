@@ -48,8 +48,18 @@ Achievement Award in 1998 from Johnson Space Center and was nominated in 1998 by
 research interests involve exploring the boundaries between traditional approaches to research data warehousing, information retrieval and
 extraction, and semantic web technologies.
 </p>
+<h4> Charisse Madlock-Brown </h4>
+<p>Charisse Madlock-Brown is a PhD candidate in Health Informatics, with a background in library and information science. Her research area
+is scientometrics with a focus on bio-medicine. As a teen she attended the Educational Center for the Arts in New Haven, CT, studying creative
+writing, and planned to peruse a career as a writer. At Bard College at Simon's Rock she studied inter-cultural relations drawing upon political
+science and anthropology. Having long since resigned to the fact that her passion and talents reside in analytics and not the arts, she is very
+excited to be a part of Shakeosphere. 
+</p>
+<br>
+<hr>
+<h2>Project Alums</h2>
 <h4> Christine M. Vivian </h4>
-<p>Christine M. Vivian is a graduate student in the School of Library and Information Science. She first learned to program 
+<p>Christine M. Vivian was a graduate student in the School of Library and Information Science. She first learned to program 
 as a young child, an interest that was rekindled in graduate school, where she gained familiarity with several computer 
 languages. With a B.A. in English from Augustana College and her graduate work in Library and Information Science, she feels 
 at home in the digital humanities where she can combine her interests to help facilitate the creation of new knowledge and 

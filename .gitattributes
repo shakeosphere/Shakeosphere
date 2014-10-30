@@ -54,6 +54,8 @@ src/main/webapp/publications/publications.jsp -text
 src/main/webapp/resources/layout.css -text
 src/main/webapp/resources/style.css -text
 src/main/webapp/search.jsp -text
+src/main/webapp/stories/boo.jsp -text
+src/main/webapp/stories/boo.png -text
 src/main/webapp/updates.jsp -text
 src/test/java/Shakeosphere/DemoTest.java -text
 src/test/resources/README.txt -text
