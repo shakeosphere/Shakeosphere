@@ -122,7 +122,7 @@
 				result. But that is because so many printers and publishers, for
 				such a long stretch of time, were identified by this common name
 				&ndash; and our data extraction technique has not yet differentiated
-				them. We have J. Johnson's who were active in the early 1600s, the
+				them. We have J. Johnsons who were active in the early 1600s, the
 				late 1600s, and all the way up to the 1780s. Clearly these are not
 				all the same person, and one of our next tasks will be able to
 				differentiate them using date and location limitations. The other
