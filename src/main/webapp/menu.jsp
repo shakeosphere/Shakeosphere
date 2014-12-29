@@ -52,7 +52,7 @@ function drawColorKey() {
 	var w = 500;
 	var h = 500;
 	var colors = d3.scale.category10();
-	var legendtext = ["Author", "Publisher", "Printer", "Bookseller"];
+	var legendtext = ["Author", "Printer", "Publisher", "Bookseller"];
 	var k = 0;
 	
 	var svg3 = d3.select("#legend")

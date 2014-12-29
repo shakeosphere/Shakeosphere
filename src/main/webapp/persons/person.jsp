@@ -19,11 +19,14 @@
 <estc:person pid="${param.pid}">
 <h2><estc:personFirstName/> <estc:personLastName/></h2>
 
+
 <c:if test="${not empty param.year}">
 	<a href="person.jsp?pid=<c:out value="${param.pid}"/>&year=<c:out value="${param.year - 1}"/>"><c:out value="${param.year - 1}"/></a> <a href="person.jsp?pid=<c:out value="${param.pid}"/>&year=<c:out value="${param.year + 1}"/>"><c:out value="${param.year + 1}"/></a>
 	(<a href="person.jsp?pid=<c:out value="${param.pid}"/>">show all</a>)
 	<h4>Activity for ${param.year}</h4>
 </c:if>
+
+<a href="../egocentric.jsp?forename=<estc:personFirstName/>&surname=<estc:personLastName/>">Show relationships for this person.</a>
 
 <c:if test="${estc:personHasAuthorByYear(tag_person.pid, param.year)}">
 	<h3>As Author</h3>
