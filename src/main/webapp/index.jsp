@@ -17,8 +17,6 @@
 	<jsp:param name="caller" value="index" />
 </jsp:include>
 <div id="center">
-<h3>On "Boo" and Betweenness: <i>Wherein Blaine explores the origines of Boo</i></h3>
-&nbsp;&nbsp;&nbsp;&nbsp;[<a href="stories/boo.jsp">Read More</a>]
 <h2>Welcome to Shakeosphere</h2>
 <p> Facebook and the blogosphere have made us increasingly aware of the power of social networks. But as long as we've had 
 societies, we've had networks and communication technologies to hold them together. Shakeosphere allows users to visualize, 

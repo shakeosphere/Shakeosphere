@@ -41,6 +41,12 @@ float: right;
 <h2> News and Updates:
 </h2>
 <p id="date">
+November 6, 2014
+</p>
+<p>On "Boo" and Betweenness: <i>Wherein Blaine explores the origines of Boo</i>
+&nbsp;&nbsp;&nbsp;&nbsp;[<a href="stories/boo.jsp">Read More</a>]
+</p>
+<p id="date">
 July 7, 2014
 </p>
 <p>
