@@ -25,6 +25,9 @@
 	(<a href="person.jsp?pid=<c:out value="${param.pid}"/>">show all</a>)
 	<h4>Activity for ${param.year}</h4>
 </c:if>
+<jsp:include page="../graphs/personHistogram.jsp" flush="true">
+	<jsp:param name="id" value="${param.pid}" />
+</jsp:include>
 
 <a href="../egocentric.jsp?forename=<estc:personFirstName/>&surname=<estc:personLastName/>">Show relationships for this person.</a>
 
