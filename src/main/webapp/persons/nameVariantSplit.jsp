@@ -193,20 +193,24 @@
 					</c:if>
 				</c:forEach>
 				<sql:query var="secondaries" dataSource="jdbc/ESTCTagLib">
-				select nextval('extraction.person_id_seq');
+				select nextval('extraction.person_id_seq'),max(seqnum)+1 as seqnum from extraction.person where first_name=? and last_name=?;
+					<sql:param>${forename}</sql:param>
+					<sql:param>${surname}</sql:param>
 			</sql:query>
 				<c:forEach items="${secondaries.rows}" var="srow">
 					<c:set var="secondary" value="${srow.nextval}" />
+					<c:set var="seqnum" value="${srow.seqnum}" />
 				</c:forEach>
 			[<a
 					href="forename_histograms.jsp?surname=${surname}&forename=${forename}">Back
 					to histograms</a>]
 
 				<sql:update dataSource="jdbc/ESTCTagLib">
-				insert into extraction.person values(?::int, ?, ?);
+				insert into extraction.person values(?::int, ?, ?, ?::int);
 				<sql:param>${secondary}</sql:param>
 					<sql:param>${forename}</sql:param>
 					<sql:param>${surname}</sql:param>
+					<sql:param>${seqnum}</sql:param>
 				</sql:update>
 				<sql:update dataSource="jdbc/ESTCTagLib">
 				update extraction.role set person_id=?::int where person_id=?::int and estc_id in (select id from estc.pub_year where pub_year.id=estc_id and pubdate >?::int);
