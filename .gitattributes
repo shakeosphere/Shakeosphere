@@ -44,6 +44,8 @@ src/main/webapp/images/graph.png -text
 src/main/webapp/images/graph_small.png -text
 src/main/webapp/images/texture1.jpg -text
 src/main/webapp/index.jsp -text
+src/main/webapp/login.jsp -text
+src/main/webapp/logout.jsp -text
 src/main/webapp/membership.jsp -text
 src/main/webapp/menu.jsp -text
 src/main/webapp/people.jsp -text
@@ -67,5 +69,7 @@ src/main/webapp/search.jsp -text
 src/main/webapp/stories/boo.jsp -text
 src/main/webapp/stories/boo.png -text
 src/main/webapp/updates.jsp -text
+src/main/webapp/users/user.jsp -text
+src/main/webapp/users/users.jsp -text
 src/test/java/Shakeosphere/DemoTest.java -text
 src/test/resources/README.txt -text

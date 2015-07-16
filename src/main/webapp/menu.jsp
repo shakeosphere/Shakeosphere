@@ -37,7 +37,24 @@
 <li> <a href="<util:applicationRoot/>/people.jsp">People</a></li>
 <li> <a href="<util:applicationRoot/>/projects.jsp">Related Projects</a></li>
 <li> <a href="<util:applicationRoot/>/contact.jsp">Contact</a></li>
+<c:if test="${is_admin}">
+<hr>
+<li> <a href="<util:applicationRoot/>/users/users.jsp">User List</a>
+</c:if>
 </ul>
+<hr>
+<p><c:choose>
+	<c:when test="${ (not empty uid) and (uid ne 'guest') }">
+		<strong>User: </strong>
+				<c:out value="${uid}" />
+		<br>
+		<A href="<util:applicationRoot/>/logout.jsp">Logout</A>
+	</c:when>
+	<c:otherwise>
+		<A href="<util:applicationRoot/>/login.jsp"><strong>Login</strong></A>
+	</c:otherwise>
+</c:choose></p>
+
 <c:if test="${param.caller == 'visualization'}">
 <div id="explanation">
 <p><em>To explore the data further:</em></p>
