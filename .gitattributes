@@ -44,6 +44,8 @@ src/main/webapp/images/graph.png -text
 src/main/webapp/images/graph_small.png -text
 src/main/webapp/images/texture1.jpg -text
 src/main/webapp/index.jsp -text
+src/main/webapp/locations/location.jsp -text
+src/main/webapp/locations/locations.jsp -text
 src/main/webapp/login.jsp -text
 src/main/webapp/logout.jsp -text
 src/main/webapp/membership.jsp -text
@@ -55,6 +57,7 @@ src/main/webapp/persons/nameVariantBinding.jsp -text
 src/main/webapp/persons/nameVariantSplit.jsp -text
 src/main/webapp/persons/person.jsp -text
 src/main/webapp/persons/persons.jsp -text
+src/main/webapp/persons/sublocations.jsp -text
 src/main/webapp/persons/surname_frequency.jsp -text
 src/main/webapp/projects.jsp -text
 src/main/webapp/publicationCount.jsp -text

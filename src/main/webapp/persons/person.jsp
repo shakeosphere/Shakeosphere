@@ -31,6 +31,27 @@
 
 <a href="../egocentric.jsp?forename=<estc:personFirstName/>&surname=<estc:personLastName/>">Show relationships for this person.</a>
 
+<c:if test="${estc:personHasLocatedByYear(param.pid)}">
+	<h3>Locations over time</h3>
+	(number of mentions in parentheses)
+	<ul>
+	<estc:foreachLocatedByYear var="locID" sortCriteria="pubyear, count desc">
+		<estc:locatedByYear>
+			<li><estc:locatedByYearPubyear/> <estc:locatedByYearLocational/>: 
+				<estc:location lid="${tag_locatedByYear.lid}">
+					<a href="../locations/location.jsp?lid=<estc:locatedByYearLid/>"><estc:locationLabel/></a>
+				</estc:location>
+				(<estc:locatedByYearCount/>)
+				<jsp:include page="sublocations.jsp">
+					<jsp:param name="person" value="${param.pid}"/>
+					<jsp:param name="parent" value="${tag_locatedByYear.lid}"/>
+					<jsp:param name="year" value="${tag_locatedByYear.pubyear}"/>
+				</jsp:include>
+		</estc:locatedByYear>
+	</estc:foreachLocatedByYear>
+	</ul>
+</c:if>
+
 <c:if test="${estc:personHasAuthorByYear(tag_person.pid, param.year)}">
 	<h3>As Author</h3>
 	<ul>

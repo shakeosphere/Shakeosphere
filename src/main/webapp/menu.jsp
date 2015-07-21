@@ -20,6 +20,11 @@
 		<li> <a href="<util:applicationRoot/>/persons/persons.jsp">Full Person List (big)</a>
 	</ul>
 </c:if>
+<c:if test="${param.caller == 'location'}">
+	<ul>
+		<li> <a href="<util:applicationRoot/>/locations/locations.jsp">Full Location List (big)</a>
+	</ul>
+</c:if>
 <c:if test="${param.caller == 'publication'}">
 	<ul>
 		<li> <a href="<util:applicationRoot/>/publications/publications.jsp">Full Publication List (really big)</a>
