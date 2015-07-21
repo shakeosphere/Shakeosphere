@@ -31,7 +31,6 @@
 		order by min,last_name,first_name;
 		<sql:param>${param.lid}</sql:param>
 	</sql:query>
-	<ul>
 	<c:forEach items="${persons.rows}" var="row" varStatus="rowCounter">
 		<tr>
 			<td>${row.min}</td>

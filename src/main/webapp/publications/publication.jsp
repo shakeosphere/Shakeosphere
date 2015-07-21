@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="estc" uri="http://icts.uiowa.edu/ESTCTagLib"%>
 
 
@@ -87,8 +88,27 @@
 		</estc:record>
 	</c:if>
 	
+	<h4>Location(s)</h4>
+	<sql:query var="locations" dataSource="jdbc/ESTCTagLib">
+		select locational, location_id, location, count
+		from navigation.locator
+		where id = ?::int
+		order by count desc;
+		<sql:param>${param.id}</sql:param>
+	</sql:query>
+	<ul>
+	<c:forEach items="${locations.rows}" var="row" varStatus="rowCounter">
+			<li>${row.locational}: <a href="../locations/location.jsp?lid=${row.location_id}">${row.location}</a>
+				<jsp:include page="sublocator.jsp">
+					<jsp:param name="id" value="${param.id}"/>
+					<jsp:param name="parent" value="${row.location_id}"/>
+				</jsp:include>
+	</c:forEach>
+	</ul>
+	
+	
 	<c:if test="${estc:recordHasMatch(param.id)}">
-		<h4>Location(s)</h4>
+		<h4>MoEML Location(s)</h4>
 		<estc:record ID="${param.id}">
 		<ul>
 		<estc:foreachMatch var="x">

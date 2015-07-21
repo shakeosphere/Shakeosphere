@@ -65,6 +65,7 @@ src/main/webapp/publicationYear.jsp -text
 src/main/webapp/publicationYearData.jsp -text
 src/main/webapp/publications/publication.jsp -text
 src/main/webapp/publications/publications.jsp -text
+src/main/webapp/publications/sublocator.jsp -text
 src/main/webapp/resources/d3.v3.min.js -text
 src/main/webapp/resources/layout.css -text
 src/main/webapp/resources/style.css -text
