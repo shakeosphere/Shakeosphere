@@ -25,7 +25,7 @@
 		<div id="center">
 			<c:set var="initial" value="${fn:substring(param.forename, 0, 1)}" />
 			<h1>${param.surname}, ${initial} Forename Histograms</h1>
-			[<a href="surname_frequency.jsp">Full List</a>]
+			[<a href="surname_frequency.jsp">Surname List</a>]
 			[<a href="forename_frequency.jsp?surname=${param.surname}">${param.surname} List</a>]
 			<sql:query var="forenames" dataSource="jdbc/ESTCTagLib">
 				select id,first_name,count(*)

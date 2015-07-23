@@ -23,6 +23,7 @@ src/main/webapp/MoEML/gazetteerList.jsp -text
 src/main/webapp/WEB-INF/lib/java-cup-0.11a-beta-20060608-runtime.jar -text
 src/main/webapp/WEB-INF/web.xml -text
 src/main/webapp/about.jsp -text
+src/main/webapp/annotation.jsp -text
 src/main/webapp/authorData.jsp -text
 src/main/webapp/contact.jsp -text
 src/main/webapp/egocentric.jsp -text

@@ -18,7 +18,7 @@
 </jsp:include>
 <div id="center">
 <h1>${param.surname} Forename Frequencies</h1>
-[<a href="surname_frequency.jsp">Full List</a>]
+[<a href="surname_frequency.jsp">Surname List</a>]
 <table>
 	<sql:query var="forenames" dataSource="jdbc/ESTCTagLib">
 		select first_name,count(*)

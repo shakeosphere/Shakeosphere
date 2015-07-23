@@ -36,6 +36,12 @@
 	</ul>
 </c:if>
 </li>
+<c:if test="${not empty uid}">
+	<li><a href="<util:applicationRoot/>/annotation.jsp">Annotate the Data</a>
+	<ul>
+		<li><a href="<util:applicationRoot/>/persons/surname_frequency.jsp">Identify People</a>
+	</ul>
+</c:if>
 <li> <a href="<util:applicationRoot/>/about.jsp">About</a></li>
 <li> <a href="<util:applicationRoot/>/updates.jsp">Updates</a></li>
 <li> <a href="<util:applicationRoot/>/grants.jsp">Grants and Support</a></li>
