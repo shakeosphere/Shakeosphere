@@ -21,7 +21,7 @@
 		</jsp:include>
 		<div id="center">
 			<sql:query var="primaries" dataSource="jdbc/ESTCTagLib">
-				select first_name,last_name from extraction.person where id = ?::int;
+				select first_name,last_name from navigation.person where pid = ?::int;
 				<sql:param>${param.primary}</sql:param>
 			</sql:query>
 			<c:forEach items="${primaries.rows}" var="row" varStatus="rowCounter">
@@ -45,8 +45,8 @@
 				<c:set var="max_count" value="${0+0}" />
 				<sql:query var="years" dataSource="jdbc/ESTCTagLib">
 				select pubdate,count(*)
-				from estc.pub_year,extraction.role
-				where pub_year.id=estc_id and person_id = ?::int
+				from estc.pub_year,navigation.all_roles,navigation.person_effective
+				where pub_year.id=estc_id and person_id=person_effective.effective_id and person_effective.pid=?::int
 				group by pubdate order by pubdate;
 				<sql:param>${param.primary}</sql:param>
 				</sql:query>
@@ -87,7 +87,12 @@
 					</thead>
 					<tbody>
 						<sql:query var="yearly" dataSource="jdbc/ESTCTagLib">
-							select distinct pubdate,locational,location from extraction.place,extraction.location,estc.pub_year where pub_year.id=place.estc_id and place.location_id=location.id and person_id = ?::int order by 1;
+							select distinct pubdate,locational,location
+							from navigation.located,navigation.location,estc.pub_year
+							where pub_year.id=located.estc_id
+							  and located.location_id=location.lid
+							  and person_id = ?::int
+							order by 1;
 							<sql:param>${param.primary}</sql:param>
 						</sql:query>
 						<c:forEach items="${yearly.rows}" var="yrow"
@@ -114,8 +119,8 @@
 				<c:set var="max_count" value="${0+0}" />
 				<sql:query var="years" dataSource="jdbc/ESTCTagLib">
 				select pubdate,count(*)
-				from estc.pub_year,extraction.role
-				where pub_year.id=estc_id and person_id = ?::int
+				from estc.pub_year,navigation.all_roles,navigation.person_effective
+				where pub_year.id=estc_id and person_id=person_effective.effective_id and person_effective.pid=?::int
 				group by pubdate order by pubdate;
 				<sql:param>${param.primary}</sql:param>
 				</sql:query>
@@ -155,7 +160,12 @@
 					</thead>
 					<tbody>
 						<sql:query var="yearly" dataSource="jdbc/ESTCTagLib">
-							select distinct pubdate,locational,location from extraction.place,extraction.location,estc.pub_year where pub_year.id=place.estc_id and place.location_id=location.id and person_id = ?::int order by 1;
+							select distinct pubdate,locational,location
+							from navigation.located,navigation.location,estc.pub_year
+							where pub_year.id=located.estc_id
+							  and located.location_id=location.lid
+							  and person_id = ?::int
+							order by 1;
 							<sql:param>${param.primary}</sql:param>
 						</sql:query>
 						<c:forEach items="${yearly.rows}" var="yrow"
@@ -176,8 +186,8 @@
 				<c:set var="max_count" value="${0+0}" />
 				<sql:query var="years" dataSource="jdbc/ESTCTagLib">
 				select pubdate,count(*)
-				from estc.pub_year,extraction.role
-				where pub_year.id=estc_id and person_id = ?::int
+				from estc.pub_year,navigation.all_roles,navigation.person_effective
+				where pub_year.id=estc_id and person_id=person_effective.effective_id and person_effective.pid=?::int
 				group by pubdate order by pubdate;
 				<sql:param>${param.primary}</sql:param>
 				</sql:query>
@@ -193,7 +203,7 @@
 					</c:if>
 				</c:forEach>
 				<sql:query var="secondaries" dataSource="jdbc/ESTCTagLib">
-				select nextval('extraction.person_id_seq'),max(seqnum)+1 as seqnum from extraction.person where first_name=? and last_name=?;
+				select nextval('navigation.person_base_pid_seq'),max(seqnum)+1 as seqnum from navigation.person_base where first_name=? and last_name=?;
 					<sql:param>${forename}</sql:param>
 					<sql:param>${surname}</sql:param>
 			</sql:query>
@@ -206,15 +216,18 @@
 					to histograms</a>]
 
 				<sql:update dataSource="jdbc/ESTCTagLib">
-				insert into extraction.person values(?::int, ?, ?, ?::int);
-				<sql:param>${secondary}</sql:param>
+					insert into navigation.person_base values(?::int, ?, ?, ?::int);
+					<sql:param>${secondary}</sql:param>
 					<sql:param>${forename}</sql:param>
 					<sql:param>${surname}</sql:param>
 					<sql:param>${seqnum}</sql:param>
 				</sql:update>
 				<sql:update dataSource="jdbc/ESTCTagLib">
-				update extraction.role set person_id=?::int where person_id=?::int and estc_id in (select id from estc.pub_year where pub_year.id=estc_id and pubdate >?::int);
-				<sql:param>${secondary}</sql:param>
+					update navigation.all_roles
+					set person_id=?::int
+					where person_id=?::int
+					  and estc_id in (select id from estc.pub_year where pub_year.id=estc_id and pubdate >?::int);
+					<sql:param>${secondary}</sql:param>
 					<sql:param>${param.primary}</sql:param>
 					<sql:param>${param.year}</sql:param>
 				</sql:update>
@@ -233,8 +246,8 @@
 							<td><sql:query var="yearsPrimary"
 									dataSource="jdbc/ESTCTagLib">
 				select pubdate,count(*)
-				from estc.pub_year,extraction.role
-				where pub_year.id=estc_id and person_id = ?::int
+				from estc.pub_year,navigation.all_roles,navigation.person_effective
+				where pub_year.id=estc_id and person_id=person_effective.effective_id and person_effective.pid=?::int
 				group by pubdate order by pubdate;
 				<sql:param>${param.primary}</sql:param>
 								</sql:query> <script>
@@ -260,8 +273,8 @@
 							<td><sql:query var="yearsSecondary"
 									dataSource="jdbc/ESTCTagLib">
 				select pubdate,count(*)
-				from estc.pub_year,extraction.role
-				where pub_year.id=estc_id and person_id = ?::int
+				from estc.pub_year,navigation.all_roles,navigation.person_effective
+				where pub_year.id=estc_id and person_id=person_effective.effective_id and person_effective.pid=?::int
 				group by pubdate order by pubdate;
 				<sql:param>${secondary}</sql:param>
 								</sql:query> <script>

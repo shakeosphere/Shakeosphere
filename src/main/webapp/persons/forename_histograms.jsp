@@ -28,10 +28,10 @@
 			[<a href="surname_frequency.jsp">Surname List</a>]
 			[<a href="forename_frequency.jsp?surname=${param.surname}">${param.surname} List</a>]
 			<sql:query var="forenames" dataSource="jdbc/ESTCTagLib">
-				select id,first_name,count(*)
-				from extraction.person,extraction.role
-				where last_name = ? and first_name ~ ? and person.id=person_id
-				  and not exists (select id from extraction.authority_binding where authority_binding.alias = person_id and authority_binding.id != person.id)
+				select pid,first_name,count(*)
+				from navigation.person,navigation.all_roles
+				where last_name = ? and first_name ~ ? and person.pid=person_id
+				  and not exists (select id from navigation.person_authority where person_authority.alias = person_id and person_authority.pid != person.pid)
 				group by 1,2 order by 2;
 				<sql:param>${param.surname}</sql:param>
 				<sql:param>^${initial}</sql:param>
@@ -41,8 +41,8 @@
 			<c:set var="max_count" value="${0+0}" />
 			<c:forEach items="${forenames.rows}" var="row" varStatus="rowCounter">
 				<sql:query var="years" dataSource="jdbc/ESTCTagLib">
-					select pubdate,count(*) from estc.pub_year,extraction.role where pub_year.id=estc_id and person_id = ?::int group by pubdate order by pubdate;
-					<sql:param>${row.id}</sql:param>
+					select pubdate,count(*) from estc.pub_year,navigation.all_roles where pub_year.id=estc_id and person_id = ?::int group by pubdate order by pubdate;
+					<sql:param>${row.pid}</sql:param>
 				</sql:query>
 				<c:forEach items="${years.rows}" var="yrow" varStatus="yrowCounter">
 					<c:if test="${min_year > yrow.pubdate }">
@@ -71,22 +71,21 @@
 					<c:forEach items="${forenames.rows}" var="row" varStatus="rowCounter">
 						<c:set var="secondaryValid" value="${true}"/>
 						<sql:query var="secondaries" dataSource="jdbc/ESTCTagLib">
-							select count(*) from extraction.authority_person where id = ?::int;
-							<sql:param>${row.id}</sql:param>
+							select count(*) from navigation.person_authority where pid = ?::int;
+							<sql:param>${row.pid}</sql:param>
 						</sql:query>
 						<c:forEach items="${secondaries.rows}" var="srow" varStatus="yrowCounter">
 							<c:set var="secondaryValid" value="${srow.count == 0}"/>
 						</c:forEach>
 						<sql:query var="years" dataSource="jdbc/ESTCTagLib">
 							select pubdate,count(*)
-							from estc.pub_year,extraction.role
-							where pub_year.id=estc_id and person_id in (select alias from extraction.authority_binding where id = ?::int union select ?::int)
+							from estc.pub_year,navigation.all_roles,navigation.person_effective
+							where pub_year.id=estc_id and person_id=person_effective.effective_id and person_effective.pid=?::int
 							group by pubdate order by pubdate;
-							<sql:param>${row.id}</sql:param>
-							<sql:param>${row.id}</sql:param>
+							<sql:param>${row.pid}</sql:param>
 						</sql:query>
 						<script>
-							var data${row.id} = [
+							var data${row.pid} = [
 							<c:forEach items="${years.rows}" var="yrow" varStatus="yrowCounter">
 								<c:out value="{"/>date : "${yrow.pubdate}-01-01", total : ${yrow.count}<c:out value="}"/>
 								<c:if test="${!yrowCounter.last}">,</c:if>
@@ -94,14 +93,14 @@
 							];
 						</script>
 						<tr>
-							<td><input type="checkbox" name="primary" value="${row.id}"/></td>
-							<td><c:if test="${secondaryValid}"><input type="checkbox" name="secondary" value="${row.id}"/></c:if></td>
+							<td><input type="checkbox" name="primary" value="${row.pid}"/></td>
+							<td><c:if test="${secondaryValid}"><input type="checkbox" name="secondary" value="${row.pid}"/></c:if></td>
 							<td><a
-								href="nameVariantSplit.jsp?primary=${row.id}">${row.first_name}</a></td>
+								href="nameVariantSplit.jsp?primary=${row.pid}">${row.first_name}</a></td>
 							<td id="graph${rowCounter.count}">
 								<jsp:include page="../graphs/dateHistogram.jsp" flush="true">
 									<jsp:param name="div_id" value="graph${rowCounter.count}" />
-									<jsp:param name="data_array" value="data${row.id}" />
+									<jsp:param name="data_array" value="data${row.pid}" />
 									<jsp:param name="min_year" value="${min_year}-01-01" />
 									<jsp:param name="max_year" value="${max_year}-01-01" />
 								</jsp:include>
@@ -127,10 +126,14 @@
 					<tbody>
 						<sql:query var="yearly" dataSource="jdbc/ESTCTagLib">
 							select distinct pubdate,role,locational,location
-							from extraction.place,extraction.location,extraction.role,estc.pub_year
-							where pub_year.id=place.estc_id and place.location_id=location.id and place.person_id=role.person_id and place.estc_id=role.estc_id and place.person_id = ?::int
+							from navigation.located,navigation.location,navigation.all_roles,estc.pub_year
+							where pub_year.id=located.estc_id
+							  and located.location_id=location.lid
+							  and located.person_id=all_roles.person_id
+							  and located.estc_id=all_roles.estc_id
+							  and located.person_id = ?::int
 							order by 1,2;
-							<sql:param>${row.id}</sql:param>
+							<sql:param>${row.pid}</sql:param>
 						</sql:query>
 						<c:forEach items="${yearly.rows}" var="yrow" varStatus="yrowCounter">
 							<tr>

@@ -22,9 +22,10 @@
 <table>
 	<sql:query var="forenames" dataSource="jdbc/ESTCTagLib">
 		select first_name,count(*)
-		from extraction.person,extraction.role
-		where last_name = ? and person.id=person_id
-		  and not exists (select id from extraction.authority_binding where authority_binding.alias = person.id and authority_binding.id != person.id)
+		from navigation.person,navigation.person_effective,navigation.all_roles
+		where last_name = ?
+		  and person.pid=person_effective.pid
+		  and person_effective.effective_id=person_id
 		group by 1 order by 1;
 		<sql:param>${param.surname}</sql:param>
 	</sql:query>

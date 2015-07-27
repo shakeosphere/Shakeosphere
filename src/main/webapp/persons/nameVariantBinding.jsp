@@ -24,7 +24,7 @@
 				<c:set var="primary" value="${primaryString}"/>
 				<c:set var="primaryExists" value="${false}"/>
 				<sql:query var="primaryCount" dataSource="jdbc/ESTCTagLib">
-					select count(*) from extraction.authority_person where id = ?::int;
+					select count(*) from navigation.person_authority where pid = ?::int;
 					<sql:param>${primary}</sql:param>
 				</sql:query>
 				<c:forEach items="${primaryCount.rows}" var="primaryCountRow" varStatus="yrowCounter">
@@ -32,27 +32,25 @@
 				</c:forEach>
 				<c:if test="${not primaryExists}">
 					<sql:update dataSource="jdbc/ESTCTagLib">
-						insert into extraction.authority_person values(?::int);
-						<sql:param>${primary}</sql:param>
-					</sql:update>
-					<sql:update dataSource="jdbc/ESTCTagLib">
-						insert into extraction.authority_binding values(?::int, ?::int);
+						insert into navigation.person_authority values(?::int, ?::int, ?::int, now());
 						<sql:param>${primary}</sql:param>
 						<sql:param>${primary}</sql:param>
+						<sql:param>${user_id}</sql:param>
 					</sql:update>
 				</c:if>
 			</c:forEach>
 			<c:forEach items="${paramValues.secondary}" var="secondaryString">
 				<c:set var="secondary" value="${secondaryString}"/>
 				<sql:update dataSource="jdbc/ESTCTagLib">
-					insert into extraction.authority_binding values(?::int, ?::int);
+					insert into navigation.person_authority values(?::int, ?::int, ?::int, now());
 					<sql:param>${primary}</sql:param>
 					<sql:param>${secondary}</sql:param>
+					<sql:param>${user_id}</sql:param>
 				</sql:update>
 			</c:forEach>
 			
 			<sql:query var="primaries" dataSource="jdbc/ESTCTagLib">
-				select first_name,last_name from extraction.person where id = ?::int;
+				select first_name,last_name from navigation.person where pid = ?::int;
 				<sql:param>${primary}</sql:param>
 			</sql:query>
 			<c:forEach items="${primaries.rows}" var="row" varStatus="rowCounter">
@@ -63,7 +61,7 @@
 			</c:forEach>
 			
 			<sql:query var="secondaries" dataSource="jdbc/ESTCTagLib">
-				select first_name,last_name from extraction.person where id in (select alias from extraction.authority_binding where id = ?::int and id != alias) order by first_name;
+				select first_name,last_name from navigation.person where pid in (select alias from navigation.person_aliases where pid = ?::int) order by first_name;
 				<sql:param>${primary}</sql:param>
 			</sql:query>
 			<ul>
@@ -77,8 +75,8 @@
 			<c:set var="max_count" value="${0+0}" />
 			<sql:query var="years" dataSource="jdbc/ESTCTagLib">
 				select pubdate,count(*)
-				from estc.pub_year,extraction.role
-				where pub_year.id=estc_id and person_id in (select alias from extraction.authority_binding where id = ?::int)
+				from estc.pub_year,navigation.all_roles,navigation.person_effective
+				where pub_year.id=estc_id and person_id=person_effective.effective_id and person_effective.pid=?::int
 				group by pubdate order by pubdate;
 				<sql:param>${primary}</sql:param>
 			</sql:query>

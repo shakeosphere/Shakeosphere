@@ -20,7 +20,7 @@
 <h1>Surname Frequencies</h1>
 <table>
 	<sql:query var="surnames" dataSource="jdbc/ESTCTagLib">
-		select last_name,count(*) from extraction.person group by 1 order by 2 desc,1;
+		select last_name,count(*) from navigation.person group by 1 order by 2 desc,1;
 	</sql:query>
 	<thead><tr><th>Surname</th><th>Frequency</th></tr></thead>
 	<tbody>
