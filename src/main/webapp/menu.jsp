@@ -17,6 +17,7 @@
 </c:if>
 <c:if test="${param.caller == 'person'}">
 	<ul>
+		<li> <a href="<util:applicationRoot/>/persons/verified_persons.jsp">Verified People</a>
 		<li> <a href="<util:applicationRoot/>/persons/persons.jsp">Full Person List (big)</a>
 	</ul>
 </c:if>

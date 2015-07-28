@@ -60,6 +60,7 @@ src/main/webapp/persons/person.jsp -text
 src/main/webapp/persons/persons.jsp -text
 src/main/webapp/persons/sublocations.jsp -text
 src/main/webapp/persons/surname_frequency.jsp -text
+src/main/webapp/persons/verified_persons.jsp -text
 src/main/webapp/projects.jsp -text
 src/main/webapp/publicationCount.jsp -text
 src/main/webapp/publicationYear.jsp -text
@@ -74,6 +75,9 @@ src/main/webapp/search.jsp -text
 src/main/webapp/stories/boo.jsp -text
 src/main/webapp/stories/boo.png -text
 src/main/webapp/updates.jsp -text
+src/main/webapp/users/submit_request.jsp -text
+src/main/webapp/users/toggle_admin.jsp -text
+src/main/webapp/users/toggle_approved.jsp -text
 src/main/webapp/users/user.jsp -text
 src/main/webapp/users/users.jsp -text
 src/test/java/Shakeosphere/DemoTest.java -text

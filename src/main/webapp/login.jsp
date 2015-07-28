@@ -44,7 +44,7 @@
 	</c:when>
 	<c:when test="${param.submit eq 'Login' }">
 		<sql:query var="refresh" dataSource="jdbc/ESTCTagLib">
-			select * from admin.user where handle = ? and password = ?;
+			select * from admin.user where handle = ? and password = ? and is_approved;
 			<sql:param value="${param.uid}" />
 			<sql:param value="${param.password}" />
 		</sql:query>

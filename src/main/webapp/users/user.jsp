@@ -48,8 +48,14 @@
 							<td><estc:userEmail /></td>
 						</tr>
 						<tr>
+							<th align=left>Is Approved</th>
+							<td><estc:userIsApproved /></td>
+							<td>[<a href="toggle_approved.jsp?uid=${param.uid}">toggle</a>]</td>
+						</tr>
+						<tr>
 							<th align=left>Is Administrator</th>
 							<td><estc:userIsAdmin /></td>
+							<td>[<a href="toggle_admin.jsp?uid=${param.uid}">toggle</a>]</td>
 						</tr>
 						<tr>
 							<th align=left>Date Created</th>

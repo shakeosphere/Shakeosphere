@@ -88,7 +88,6 @@
 		</estc:record>
 	</c:if>
 	
-	<h4>Location(s)</h4>
 	<sql:query var="locations" dataSource="jdbc/ESTCTagLib">
 		select locational, location_id, location, count
 		from navigation.locator
@@ -96,15 +95,20 @@
 		order by count desc;
 		<sql:param>${param.id}</sql:param>
 	</sql:query>
-	<ul>
 	<c:forEach items="${locations.rows}" var="row" varStatus="rowCounter">
+		<c:if test="${rowCounter.first}">
+			<h4>Location(s)</h4>
+			<ul>
+		</c:if>
 			<li>${row.locational}: <a href="../locations/location.jsp?lid=${row.location_id}">${row.location}</a>
 				<jsp:include page="sublocator.jsp">
 					<jsp:param name="id" value="${param.id}"/>
 					<jsp:param name="parent" value="${row.location_id}"/>
 				</jsp:include>
+		<c:if test="${rowCounter.last}">
+			</ul>
+		</c:if>
 	</c:forEach>
-	</ul>
 	
 	
 	<c:if test="${estc:recordHasMatch(param.id)}">

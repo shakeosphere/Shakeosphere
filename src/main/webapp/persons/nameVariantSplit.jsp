@@ -90,8 +90,8 @@
 							select distinct pubdate,locational,location
 							from navigation.located,navigation.location,estc.pub_year
 							where pub_year.id=located.estc_id
-							  and located.location_id=location.lid
-							  and person_id = ?::int
+							  and located.lid=location.lid
+							  and pid = ?::int
 							order by 1;
 							<sql:param>${param.primary}</sql:param>
 						</sql:query>
@@ -163,8 +163,8 @@
 							select distinct pubdate,locational,location
 							from navigation.located,navigation.location,estc.pub_year
 							where pub_year.id=located.estc_id
-							  and located.location_id=location.lid
-							  and person_id = ?::int
+							  and located.lid=location.lid
+							  and pid = ?::int
 							order by 1;
 							<sql:param>${param.primary}</sql:param>
 						</sql:query>

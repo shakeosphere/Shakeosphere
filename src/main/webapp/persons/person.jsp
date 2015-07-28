@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="estc" uri="http://icts.uiowa.edu/ESTCTagLib"%>
 
 
@@ -19,7 +20,45 @@
 <estc:person pid="${param.pid}">
 <h2><estc:personFirstName/> <estc:personLastName/></h2>
 
+<sql:query var="primary" dataSource="jdbc/ESTCTagLib">
+	select person_base.first_name,defined,handle
+	from navigation.person_base,navigation.person_authority,navigation.user
+	where person_authority.pid = ?::int
+	  and person_authority.pid = person_authority.alias
+	  and person_base.pid=person_authority.alias
+	  and person_authority.id=navigation.user.id
+	order by 1;
+	<sql:param>${param.pid}</sql:param>
+</sql:query>
+<c:forEach items="${primary.rows}" var="row" varStatus="rowCounter">
+	Validated: ${row.defined} <i>(${row.handle})</i>
+</c:forEach>
 
+<sql:query var="aliases" dataSource="jdbc/ESTCTagLib">
+	select person_base.first_name,handle
+	from navigation.person_base,navigation.person_authority,navigation.user
+	where person_authority.pid = ?::int
+	  and person_authority.pid != person_authority.alias
+	  and person_base.pid=person_authority.alias
+	  and person_authority.id=navigation.user.id
+	order by 1;
+	<sql:param>${param.pid}</sql:param>
+</sql:query>
+<c:forEach items="${aliases.rows}" var="row" varStatus="rowCounter">
+	<c:if test="${rowCounter.first}">
+		<h3>Aliases</h3>
+		<ul>
+	</c:if>
+	<li>${row.first_name} <i>(${row.handle})</i>
+	<c:if test="${rowCounter.last}">
+		</ul>
+	</c:if>
+</c:forEach>
+
+
+<c:if test="${empty param.year}">
+	<h3>Active Years</h3>
+</c:if>
 <c:if test="${not empty param.year}">
 	<a href="person.jsp?pid=<c:out value="${param.pid}"/>&year=<c:out value="${param.year - 1}"/>"><c:out value="${param.year - 1}"/></a> <a href="person.jsp?pid=<c:out value="${param.pid}"/>&year=<c:out value="${param.year + 1}"/>"><c:out value="${param.year + 1}"/></a>
 	(<a href="person.jsp?pid=<c:out value="${param.pid}"/>">show all</a>)
@@ -29,7 +68,7 @@
 	<jsp:param name="id" value="${param.pid}" />
 </jsp:include>
 
-<a href="../egocentric.jsp?forename=<estc:personFirstName/>&surname=<estc:personLastName/>">Show relationships for this person.</a>
+<%-- <a href="../egocentric.jsp?forename=<estc:personFirstName/>&surname=<estc:personLastName/>">Show relationships for this person.</a> --%>
 
 <c:if test="${estc:personHasLocatedByYear(param.pid)}">
 	<h3>Locations over time</h3>

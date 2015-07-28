@@ -128,10 +128,10 @@
 							select distinct pubdate,role,locational,location
 							from navigation.located,navigation.location,navigation.all_roles,estc.pub_year
 							where pub_year.id=located.estc_id
-							  and located.location_id=location.lid
-							  and located.person_id=all_roles.person_id
+							  and located.lid=location.lid
+							  and located.pid=all_roles.person_id
 							  and located.estc_id=all_roles.estc_id
-							  and located.person_id = ?::int
+							  and located.pid = ?::int
 							order by 1,2;
 							<sql:param>${row.pid}</sql:param>
 						</sql:query>
