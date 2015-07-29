@@ -52,6 +52,7 @@ src/main/webapp/logout.jsp -text
 src/main/webapp/membership.jsp -text
 src/main/webapp/menu.jsp -text
 src/main/webapp/people.jsp -text
+src/main/webapp/persons/female_persons.jsp -text
 src/main/webapp/persons/forename_frequency.jsp -text
 src/main/webapp/persons/forename_histograms.jsp -text
 src/main/webapp/persons/nameVariantBinding.jsp -text
@@ -60,6 +61,7 @@ src/main/webapp/persons/person.jsp -text
 src/main/webapp/persons/persons.jsp -text
 src/main/webapp/persons/sublocations.jsp -text
 src/main/webapp/persons/surname_frequency.jsp -text
+src/main/webapp/persons/toggle_gender.jsp -text
 src/main/webapp/persons/verified_persons.jsp -text
 src/main/webapp/projects.jsp -text
 src/main/webapp/publicationCount.jsp -text
