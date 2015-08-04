@@ -23,10 +23,12 @@
 	<sql:query var="forenames" dataSource="jdbc/ESTCTagLib">
 		select first_name,count(*)
 		from navigation.person,navigation.person_effective,navigation.all_roles
-		where last_name = ?
+		where navigation.levenshtein(last_name,?)<3
+		  and navigation.difference(last_name,?)>2
 		  and person.pid=person_effective.pid
 		  and person_effective.effective_id=person_id
 		group by 1 order by 1;
+		<sql:param>${param.surname}</sql:param>
 		<sql:param>${param.surname}</sql:param>
 	</sql:query>
 	<thead><tr><th>Forename</th><th>Frequency</th></tr></thead>

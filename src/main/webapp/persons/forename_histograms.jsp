@@ -28,14 +28,18 @@
 			[<a href="surname_frequency.jsp">Surname List</a>]
 			[<a href="forename_frequency.jsp?surname=${param.surname}">${param.surname} List</a>]
 			<sql:query var="forenames" dataSource="jdbc/ESTCTagLib">
-				select pid,first_name,count(*)
+				select pid,first_name,last_name,count(*)
 				from navigation.person,navigation.all_roles
-				where last_name = ? and first_name ~ ? and person.pid=person_id
+				where navigation.levenshtein(last_name,?)<3
+		  		  and navigation.difference(last_name,?)>2
+		  		  and first_name ~ ? and person.pid=person_id
 				  and not exists (select id from navigation.person_authority where person_authority.alias = person_id and person_authority.pid != person.pid)
-				group by 1,2 order by 2;
+				group by 1,2,3 order by 2,3;
 				<sql:param>${param.surname}</sql:param>
-				<sql:param>^${initial}</sql:param>
+				<sql:param>${param.surname}</sql:param>
+				<sql:param><c:choose><c:when test="${initial == 'J'}">^(${initial}|I)</c:when><c:when test="${initial == 'W'}">^(${initial}|VV)</c:when><c:otherwise>^${initial}</c:otherwise></c:choose></sql:param>
 			</sql:query>
+			
 			<c:set var="min_year" value="${2000+0}" />
 			<c:set var="max_year" value="${0+0}" />
 			<c:set var="max_count" value="${0+0}" />
@@ -96,7 +100,7 @@
 							<td><input type="checkbox" name="primary" value="${row.pid}"/></td>
 							<td><c:if test="${secondaryValid}"><input type="checkbox" name="secondary" value="${row.pid}"/></c:if></td>
 							<td><a
-								href="nameVariantSplit.jsp?primary=${row.pid}">${row.first_name}</a></td>
+								href="nameVariantSplit.jsp?primary=${row.pid}">${row.first_name}</a> ${row.last_name}</td>
 							<td id="graph${rowCounter.count}">
 								<jsp:include page="../graphs/dateHistogram.jsp" flush="true">
 									<jsp:param name="div_id" value="graph${rowCounter.count}" />
@@ -113,7 +117,7 @@
 				</form>
 
 			<c:forEach items="${forenames.rows}" var="row" varStatus="rowCounter">
-				<hr/><h4>${param.surname}, ${row.first_name}</h4>
+				<hr/><h4>${row.last_name}, ${row.first_name}</h4>
 				<table>
 					<thead>
 						<tr>
@@ -125,7 +129,7 @@
 					</thead>
 					<tbody>
 						<sql:query var="yearly" dataSource="jdbc/ESTCTagLib">
-							select distinct pubdate,role,locational,location
+							select distinct pubdate,role,locational,label
 							from navigation.located,navigation.location,navigation.all_roles,estc.pub_year
 							where pub_year.id=located.estc_id
 							  and located.lid=location.lid
@@ -140,7 +144,7 @@
 								<td>${yrow.pubdate}</td>
 								<td>${yrow.role}</td>
 								<td align=center>${yrow.locational}</td>
-								<td>${yrow.location}</td>
+								<td>${yrow.label}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
