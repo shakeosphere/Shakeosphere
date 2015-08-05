@@ -98,7 +98,7 @@
 						</script>
 						<tr>
 							<td><input type="checkbox" name="primary" value="${row.pid}"/></td>
-							<td><c:if test="${secondaryValid}"><input type="checkbox" name="secondary" value="${row.pid}"/></c:if></td>
+							<td><input type="checkbox" name="secondary" value="${row.pid}"/></td>
 							<td><a
 								href="nameVariantSplit.jsp?primary=${row.pid}">${row.first_name}</a> ${row.last_name}</td>
 							<td id="graph${rowCounter.count}">

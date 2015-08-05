@@ -41,11 +41,25 @@
 			</c:forEach>
 			<c:forEach items="${paramValues.secondary}" var="secondaryString">
 				<c:set var="secondary" value="${secondaryString}"/>
+				<sql:query var="secondaryCount" dataSource="jdbc/ESTCTagLib">
+					select count(*) from navigation.person_authority where pid = ?::int;
+					<sql:param>${secondary}</sql:param>
+				</sql:query>
+				<c:forEach items="${secondaryCount.rows}" var="secondaryCountRow" varStatus="yrowCounter">
+					<c:set var="secondaryExists" value="${secondaryCountRow.count > 0}"/>
+				</c:forEach>
+				<c:if test="${not secondaryExists}">
+					<sql:update dataSource="jdbc/ESTCTagLib">
+						insert into navigation.person_authority values(?::int, ?::int, ?::int, now());
+						<sql:param>${primary}</sql:param>
+						<sql:param>${secondary}</sql:param>
+						<sql:param>${user_id}</sql:param>
+					</sql:update>
+				</c:if>
 				<sql:update dataSource="jdbc/ESTCTagLib">
-					insert into navigation.person_authority values(?::int, ?::int, ?::int, now());
+					update navigation.person_authority set pid = ?::int where pid = ?::int ;
 					<sql:param>${primary}</sql:param>
 					<sql:param>${secondary}</sql:param>
-					<sql:param>${user_id}</sql:param>
 				</sql:update>
 			</c:forEach>
 			
