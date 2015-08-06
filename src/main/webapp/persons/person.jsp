@@ -35,13 +35,13 @@
 </c:forEach>
 
 <sql:query var="aliases" dataSource="jdbc/ESTCTagLib">
-	select person_base.first_name,handle
+	select person_base.first_name,person_base.last_name,handle
 	from navigation.person_base,navigation.person_authority,navigation.user
 	where person_authority.pid = ?::int
 	  and person_authority.pid != person_authority.alias
 	  and person_base.pid=person_authority.alias
 	  and person_authority.id=navigation.user.id
-	order by 1;
+	order by 2,1;
 	<sql:param>${param.pid}</sql:param>
 </sql:query>
 <c:forEach items="${aliases.rows}" var="row" varStatus="rowCounter">
@@ -49,7 +49,7 @@
 		<h3>Aliases</h3>
 		<ul>
 	</c:if>
-	<li>${row.first_name} <i>(${row.handle})</i>
+	<li>${row.first_name} ${row.last_name} <i>(${row.handle})</i>
 	<c:if test="${rowCounter.last}">
 		</ul>
 	</c:if>
