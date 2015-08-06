@@ -7,7 +7,13 @@
 
 <graph:graph>
 	<sql:query var="authors" dataSource="jdbc/ESTCTagLib">
-		select person.pid,first_name,last_name,count(*) from estc.pub_year natural join navigation.author natural join navigation.person where pubdate = ?::int group by 1,2,3;
+		select person.pid, first_name, last_name, count(*)
+		from estc.pub_year, navigation.person, navigation.person_effective, navigation.author
+		where pubdate = ?::int
+		  and pub_year.id=author.id
+		  and author.pid = person_effective.effective_id
+		  and person_effective.pid=person.pid
+		group by 1,2,3;
 		<sql:param value="${param.year}"/>
 	</sql:query>
 	<c:forEach items="${authors.rows}" var="row" varStatus="rowCounter">
@@ -15,7 +21,13 @@
 	</c:forEach>
 
 	<sql:query var="printers" dataSource="jdbc/ESTCTagLib">
-		select person.pid,first_name,last_name,count(*) from estc.pub_year natural join navigation.printer natural join navigation.person where pubdate = ?::int group by 1,2,3;
+		select person.pid, first_name, last_name, count(*)
+		from estc.pub_year, navigation.person, navigation.person_effective, navigation.printer
+		where pubdate = ?::int
+		  and pub_year.id=printer.id
+		  and printer.pid = person_effective.effective_id
+		  and person_effective.pid=person.pid
+		group by 1,2,3;
 		<sql:param value="${param.year}"/>
 	</sql:query>
 	<c:forEach items="${printers.rows}" var="row" varStatus="rowCounter">
@@ -23,7 +35,13 @@
 	</c:forEach>
 
 	<sql:query var="publishers" dataSource="jdbc/ESTCTagLib">
-		select person.pid,first_name,last_name,count(*) from estc.pub_year natural join navigation.publisher natural join navigation.person where pubdate = ?::int group by 1,2,3;
+		select person.pid, first_name, last_name, count(*)
+		from estc.pub_year, navigation.person, navigation.person_effective, navigation.publisher
+		where pubdate = ?::int
+		  and pub_year.id=publisher.id
+		  and publisher.pid = person_effective.effective_id
+		  and person_effective.pid=person.pid
+		group by 1,2,3;
 		<sql:param value="${param.year}"/>
 	</sql:query>
 	<c:forEach items="${publishers.rows}" var="row" varStatus="rowCounter">
@@ -31,7 +49,13 @@
 	</c:forEach>
 
 	<sql:query var="sellers" dataSource="jdbc/ESTCTagLib">
-		select person.pid,first_name,last_name,count(*) from estc.pub_year natural join navigation.bookseller natural join navigation.person where pubdate = ?::int group by 1,2,3;
+		select person.pid, first_name, last_name, count(*)
+		from estc.pub_year, navigation.person, navigation.person_effective, navigation.bookseller
+		where pubdate = ?::int
+		  and pub_year.id=bookseller.id
+		  and bookseller.pid = person_effective.effective_id
+		  and person_effective.pid=person.pid
+		group by 1,2,3;
 		<sql:param value="${param.year}"/>
 	</sql:query>
 	<c:forEach items="${sellers.rows}" var="row" varStatus="rowCounter">
@@ -39,7 +63,14 @@
 	</c:forEach>
 
 	<sql:query var="authorPrinter" dataSource="jdbc/ESTCTagLib">
-		select author.pid as author,printer.pid as printer,count(*) from navigation.author,navigation.printer,estc.pub_year where author.id=printer.id and author.id=pub_year.id and pubdate = ?::int group by 1,2;
+		select author.pid as author,printer.pid as printer,count(*)
+		from navigation.author,navigation.printer,estc.pub_year
+		where exists (select person.pid from navigation.person where person.pid=author.pid)
+		  and exists (select person.pid from navigation.person where person.pid=printer.pid)
+		  and author.id=printer.id
+		  and author.id=pub_year.id
+		  and pubdate = ?::int
+		group by 1,2;
 		<sql:param value="${param.year}"/>
 	</sql:query>
 	<c:forEach items="${authorPrinter.rows}" var="row" varStatus="rowCounter">
@@ -47,7 +78,14 @@
 	</c:forEach>
 
 	<sql:query var="authorPublisher" dataSource="jdbc/ESTCTagLib">
-		select author.pid as author,publisher.pid as publisher,count(*) from navigation.author,navigation.publisher,estc.pub_year where author.id=publisher.id and author.id=pub_year.id and pubdate = ?::int group by 1,2;
+		select author.pid as author,publisher.pid as publisher,count(*)
+		from navigation.author,navigation.publisher,estc.pub_year
+		where exists (select person.pid from navigation.person where person.pid=author.pid)
+		  and exists (select person.pid from navigation.person where person.pid=publisher.pid)
+		  and author.id=publisher.id
+		  and author.id=pub_year.id
+		  and pubdate = ?::int
+		group by 1,2;
 		<sql:param value="${param.year}"/>
 	</sql:query>
 	<c:forEach items="${authorPublisher.rows}" var="row" varStatus="rowCounter">
@@ -55,7 +93,14 @@
 	</c:forEach>
 
 	<sql:query var="authorSeller" dataSource="jdbc/ESTCTagLib">
-		select author.pid as author,bookseller.pid as bookseller,count(*) from navigation.author,navigation.bookseller,estc.pub_year where author.id=bookseller.id and author.id=pub_year.id and pubdate = ?::int group by 1,2;
+		select author.pid as author,bookseller.pid as bookseller,count(*)
+		from navigation.author,navigation.bookseller,estc.pub_year
+		where exists (select person.pid from navigation.person where person.pid=author.pid)
+		  and exists (select person.pid from navigation.person where person.pid=bookseller.pid)
+		  and author.id=bookseller.id
+		  and author.id=pub_year.id
+		  and pubdate = ?::int
+		group by 1,2;
 		<sql:param value="${param.year}"/>
 	</sql:query>
 	<c:forEach items="${authorSeller.rows}" var="row" varStatus="rowCounter">
@@ -63,7 +108,14 @@
 	</c:forEach>
 
 	<sql:query var="printerPublisher" dataSource="jdbc/ESTCTagLib">
-		select printer.pid as printer,publisher.pid as publisher,count(*) from navigation.printer,navigation.publisher,estc.pub_year where printer.id=publisher.id and printer.id=pub_year.id and pubdate = ?::int group by 1,2;
+		select printer.pid as printer,publisher.pid as publisher,count(*)
+		from navigation.printer,navigation.publisher,estc.pub_year
+		where exists (select person.pid from navigation.person where person.pid=printer.pid)
+		  and exists (select person.pid from navigation.person where person.pid=publisher.pid)
+		  and printer.id=publisher.id
+		  and printer.id=pub_year.id
+		  and pubdate = ?::int
+		group by 1,2;
 		<sql:param value="${param.year}"/>
 	</sql:query>
 	<c:forEach items="${printerPublisher.rows}" var="row" varStatus="rowCounter">
@@ -71,7 +123,14 @@
 	</c:forEach>
 
 	<sql:query var="printerSeller" dataSource="jdbc/ESTCTagLib">
-		select printer.pid as printer,bookseller.pid as bookseller,count(*) from navigation.printer,navigation.bookseller,estc.pub_year where printer.id=bookseller.id and printer.id=pub_year.id and pubdate = ?::int group by 1,2;
+		select printer.pid as printer,bookseller.pid as bookseller,count(*)
+		from navigation.printer,navigation.bookseller,estc.pub_year
+		where exists (select person.pid from navigation.person where person.pid=printer.pid)
+		  and exists (select person.pid from navigation.person where person.pid=bookseller.pid)
+		  and printer.id=bookseller.id
+		  and printer.id=pub_year.id
+		  and pubdate = ?::int
+		group by 1,2;
 		<sql:param value="${param.year}"/>
 	</sql:query>
 	<c:forEach items="${printerSeller.rows}" var="row" varStatus="rowCounter">
@@ -79,7 +138,14 @@
 	</c:forEach>
 
 	<sql:query var="publisherSeller" dataSource="jdbc/ESTCTagLib">
-		select publisher.pid as publisher,bookseller.pid as bookseller,count(*) from navigation.publisher,navigation.bookseller,estc.pub_year where publisher.id=bookseller.id and publisher.id=pub_year.id and pubdate = ?::int group by 1,2;
+		select publisher.pid as publisher,bookseller.pid as bookseller,count(*)
+		from navigation.publisher,navigation.bookseller,estc.pub_year
+		where exists (select person.pid from navigation.person where person.pid=publisher.pid)
+		  and exists (select person.pid from navigation.person where person.pid=bookseller.pid)
+		  and publisher.id=bookseller.id
+		  and publisher.id=pub_year.id
+		  and pubdate = ?::int
+		group by 1,2;
 		<sql:param value="${param.year}"/>
 	</sql:query>
 	<c:forEach items="${publisherSeller.rows}" var="row" varStatus="rowCounter">
