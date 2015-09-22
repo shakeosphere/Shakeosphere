@@ -35,6 +35,7 @@ src/main/webapp/graphs/forceGraph.jsp -text
 src/main/webapp/graphs/labelledForceGraph.jsp -text
 src/main/webapp/graphs/labelledMap.jsp -text
 src/main/webapp/graphs/personHistogram.jsp -text
+src/main/webapp/graphs/scatterplot.jsp -text
 src/main/webapp/header.jsp -text
 src/main/webapp/images/Studio_websitelogo.png -text
 src/main/webapp/images/atlasbackground.png -text
@@ -45,6 +46,10 @@ src/main/webapp/images/graph.png -text
 src/main/webapp/images/graph_small.png -text
 src/main/webapp/images/texture1.jpg -text
 src/main/webapp/index.jsp -text
+src/main/webapp/linked_reading/ldaData.jsp -text
+src/main/webapp/linked_reading/ldaDisplay.jsp -text
+src/main/webapp/linked_reading/ldaYearData.jsp -text
+src/main/webapp/linked_reading/scatter.jsp -text
 src/main/webapp/locations/location.jsp -text
 src/main/webapp/locations/locations.jsp -text
 src/main/webapp/login.jsp -text
