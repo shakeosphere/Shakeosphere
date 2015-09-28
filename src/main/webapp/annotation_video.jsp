@@ -29,16 +29,7 @@
 				<c:set var="available" value="${row.count}" />
 			</c:forEach>
 
-			<p>The people in the English Short Title Catalog are named in the
-				data in a multitude of variant spellings, abbreviations - you name
-				it and someone probably appears that way! (Don't even get us started
-				on VV and W...) We have created an interface for you our users to
-				help us in teasing out who's who in all of this. There are currently
-				<fmt:formatNumber type="number" pattern="##,###" value="${available}"/>
-				people identified in the publisher field who
-				have not been connected to an authority record.</p>
-				
-			
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/aM5SC2oHNjI" frameborder="0" allowfullscreen></iframe>
 
 			<c:if test="${not empty uid}">
 				<p>Click on the "Identify People" link in the menu on the left
@@ -52,8 +43,6 @@
 					All annotations are publicly credited to their creators - your
 					chance at crowdsourcing fame and glory!</p>
 			</c:if>
-			
-			<p><a href="annotation_video.jsp"><i>Watch the video!</i></a></p>
 			
 			<h2>Our Leaderboard</h2>
 			<sql:query var="leader" dataSource="jdbc/ESTCTagLib">

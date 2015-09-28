@@ -117,6 +117,11 @@
         	<artifactId>UtilTagLib</artifactId>
         	<version>1.0.4-SNAPSHOT</version>
         </dependency>
+        <dependency>
+        	<groupId>MailTagLib</groupId>
+        	<artifactId>MailTagLib</artifactId>
+        	<version>0.0.1-SNAPSHOT</version>
+        </dependency>
   </dependencies>
   <build>
   	<plugins>

@@ -13,6 +13,9 @@
         <dependent-module archiveName="UtilTagLib-1.0.4-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/UtilTagLib/UtilTagLib">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="MailTagLib-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/MailTagLib/MailTagLib">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/${artifactId}/target/classes"/>
         <property name="context-root" value="Shakeosphere"/>
     </wb-module>

@@ -2,6 +2,7 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="estc" uri="http://icts.uiowa.edu/ESTCTagLib"%>
 <%@ taglib prefix="util" uri="http://icts.uiowa.edu/tagUtil"%>
+<%@ taglib prefix="mail" uri="http://slis.uiowa.edu/mailtaglib"%>
 <c:choose>
 	<c:when test="${empty param.submit}">
 		<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -51,6 +52,20 @@
 			<estc:userIsAdmin isAdmin="${false}" />
 			<estc:userIsApproved isApproved="${false}" />
 		</estc:user>
+		<mail:message host="ns-mx.uiowa.edu">
+			<mail:fromAddress name="David Eichmann" address="david-eichmann@uiowa.edu"/>
+			<mail:recipientAddress name="David Eichmann" address="david-eichmann@uiowa.edu"/>
+			<mail:recipientAddress name="Blaine Greteman" address="blaine-greteman@uiowa.edu"/>
+			<mail:subject>Shakeosphere user request: ${param.last_name}, ${param.first_name}</mail:subject>
+			<mail:htmlBody>
+				<h2>New User Request</h2>
+				<table>
+					<tr><th align=left>ID</th><td>${param.uid}</td></tr>
+					<tr><th align=left>User Name</th><td>${param.last_name}, ${param.first_name}</td></tr>
+					<tr><th align=left>Email</th><td>${param.email}</td></tr>
+				</table>
+			</mail:htmlBody>
+		</mail:message>
 		<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 		<html>
 		<head>
