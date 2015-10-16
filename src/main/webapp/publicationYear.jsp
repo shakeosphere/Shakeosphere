@@ -34,7 +34,7 @@
 		<sql:param value="${param.year}"/>
 </sql:query>
 <c:forEach items="${nodes.rows}" var="row" varStatus="rowCounter">
-	<fmt:parseNumber var="count" value="${row.count}"/>
+	<fmt:parseNumber var="count" value="${row.count}" parseLocale="en_US" />
 </c:forEach>
 <br/>Count: <c:out value="${count}"/><br/>
 

@@ -68,8 +68,6 @@
 	<jsp:param name="id" value="${param.pid}" />
 </jsp:include>
 
-<%-- <a href="../egocentric.jsp?forename=<estc:personFirstName/>&surname=<estc:personLastName/>">Show relationships for this person.</a> --%>
-
 <c:if test="${estc:personHasLocatedByYear(param.pid)}">
 	<h3>Locations over time</h3>
 	(number of mentions in parentheses)
