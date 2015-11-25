@@ -78,7 +78,7 @@ bar to see a graph of the data from that year.
 </p>
 </div>
 </c:if>
-<script src="http://d3js.org/d3.v2.min.js"></script>
+<script src="resources/d3.v3.min.js"></script>
 <script>
 function drawColorKey() {
 	var w = 500;

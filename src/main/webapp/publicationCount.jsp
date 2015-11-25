@@ -30,7 +30,7 @@
 <jsp:include page="footer.jsp" flush="true" />
 </div>
 </div>
-	<script src="http://d3js.org/d3.v2.min.js"></script>
+<script src="resources/d3.v3.min.js"></script>
 	<script>
 function renderChart() {
 

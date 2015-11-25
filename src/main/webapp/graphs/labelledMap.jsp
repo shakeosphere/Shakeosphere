@@ -16,7 +16,7 @@ text {
 	stroke-opacity: .6;
 }
 </style>
-<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="../resources/d3.v3.min.js"></script>
 <script>
 
 var width = 700,
