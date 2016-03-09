@@ -89,13 +89,6 @@
 	</dependency>
 		
         <dependency>
-        	<groupId>GraphTagLib</groupId>
-        	<artifactId>GraphTagLib</artifactId>
-        	<version>0.0.1-SNAPSHOT</version>
-        	<type>jar</type>
-        	<scope>compile</scope>
-        </dependency>
-        <dependency>
         	<groupId>org.postgresql</groupId>
         	<artifactId>postgresql</artifactId>
         	<version>9.3-1101-jdbc4</version>
@@ -120,6 +113,11 @@
         <dependency>
         	<groupId>MailTagLib</groupId>
         	<artifactId>MailTagLib</artifactId>
+        	<version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+        	<groupId>GraphTagLib</groupId>
+        	<artifactId>GraphTagLib</artifactId>
         	<version>0.0.1-SNAPSHOT</version>
         </dependency>
   </dependencies>
