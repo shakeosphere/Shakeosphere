@@ -48,6 +48,9 @@ Achievement Award in 1998 from Johnson Space Center and was nominated in 1998 by
 research interests involve exploring the boundaries between traditional approaches to research data warehousing, information retrieval and
 extraction, and semantic web technologies.
 </p>
+<br>
+<hr>
+<h2>Project Alums</h2>
 <h4> Charisse Madlock-Brown </h4>
 <p>Charisse Madlock-Brown is a PhD candidate in Health Informatics, with a background in library and information science. Her research area
 is scientometrics with a focus on bio-medicine. As a teen she attended the Educational Center for the Arts in New Haven, CT, studying creative
@@ -55,9 +58,6 @@ writing, and planned to peruse a career as a writer. At Bard College at Simon's 
 science and anthropology. Having long since resigned to the fact that her passion and talents reside in analytics and not the arts, she is very
 excited to be a part of Shakeosphere. 
 </p>
-<br>
-<hr>
-<h2>Project Alums</h2>
 <h4> Christine M. Vivian </h4>
 <p>Christine M. Vivian was a graduate student in the School of Library and Information Science. She first learned to program 
 as a young child, an interest that was rekindled in graduate school, where she gained familiarity with several computer 
@@ -65,6 +65,14 @@ languages. With a B.A. in English from Augustana College and her graduate work i
 at home in the digital humanities where she can combine her interests to help facilitate the creation of new knowledge and 
 new understandings. Her research focuses on conceptions of literacy and learning and the role of digital humanities in that 
 process.
+</p>
+<h4>Katie E. Wetzel</h4>
+<p>Katie E. Wetzel is a PhD candidate in the Iowa Department of English. She received her BA and MA at the University of Kansas.
+She studies the relationship between Victorian reform movements and the history of science, and her dissertation explores
+displacement narratives in the late-Victorian metropole. Katie began her work on Shakeosphere during its initial phase;
+she spent most of her time buried in letters and entering publication and correspondence data into spreadsheets.
+Seeing this project move from bound collections and manuscripts to metadata inspired Katie to pursue various digital humanities
+projects to enhance both her teaching and her research.
 </p>
 <jsp:include page="footer.jsp" flush="true" />
 </div>
