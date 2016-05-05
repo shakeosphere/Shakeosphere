@@ -54,6 +54,10 @@ d3.json("${param.data_page}", function(error, graph) {
       .links(graph.links)
       .start();
 
+	var rScale = d3.scale.linear()
+	 .domain([0, d3.max(graph.nodes, function(d) { return d.score; })])
+	 .range([3, 500]);
+
   var link = svg.selectAll(".link")
       .data(graph.links)
     .enter().append("line")
@@ -68,11 +72,11 @@ d3.json("${param.data_page}", function(error, graph) {
        .call(force.drag);
   
   node.append("circle")
-      .attr("r", function(d) { return d.score; })
+      .attr("r", function(d) { return rScale(d.score); })
 	  .style("fill", function(d) { return color(d.group); });
 
   node.append("text")
-	.attr("x", function(d) { return d.score + 5; })
+	.attr("x", function(d) { return rScale(d.score) + 5; })
 	    .attr("dy", ".35em")
      .text(function(d) { return d.name; });
 

@@ -46,6 +46,10 @@ d3.json("${param.data_page}", function(error, graph) {
       .links(graph.links)
       .start();
 
+	var rScale = d3.scale.linear()
+	 .domain([0, d3.max(graph.nodes, function(d) { return d.score; })])
+	 .range([3, 10]);
+
   var link = svg.selectAll(".link")
       .data(graph.links)
     .enter().append("line")
@@ -56,7 +60,7 @@ d3.json("${param.data_page}", function(error, graph) {
       .data(graph.nodes)
     .enter().append("circle")
       .attr("class", "node")
-      .attr("r", function(d) { return d.score; })
+      .attr("r", function(d) { return rScale(d.score); })
       .style("fill", function(d) { return color(d.group); })
 		.on("dblclick", function(d) { window.open("persons/person.jsp?pid="+d.url+"&year=${param.year}","_self");})
        .call(force.drag);
