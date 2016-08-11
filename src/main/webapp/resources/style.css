@@ -10,6 +10,41 @@ color: #000;
 em {
 font-weight:bold;	
 }
+
+/* Forms. */
+.inputdiv {
+	float: left;
+	padding-right: 40px;
+	padding-bottom: 20px;
+	margin: 0px;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size: 1.0em;
+	font-weight: bold;
+}
+
+.selectbox {
+	border-radius: 7px 7px 7px 7px;
+	padding: 5px;
+	font-weight: normal;
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size: 1.0em;
+	font-weight: normal;
+}
+
+
+table, th, td {
+    border: 1px solid black;
+	margin-top: 10px;
+}
+
+th, td {
+    padding: 8px;
+	text-transform: capitalize;
+}
+
+#tablehead {
+	font-weight: bold;
+}
 	
 #body {
 width: 960px;
@@ -72,4 +107,5 @@ margin-left: 15px;
 #legendtitle {
 padding-top: 5px;	
 margin-left: 25px;
-}	
+}
+

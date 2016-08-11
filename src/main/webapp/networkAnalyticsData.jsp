@@ -9,8 +9,9 @@
 	<sql:query var="authors" dataSource="jdbc/ESTCTagLib">
 		select pid, first_name, last_name, count
 		from visualization.author
-		where pubdate = ?::int;
-		<sql:param value="${param.year}"/>
+		where (pubdate between ?::int and ?::int);
+		<sql:param value="${param.startYear}"/>
+        <sql:param value="${param.endYear}"/>
 	</sql:query>
 	<c:forEach items="${authors.rows}" var="row" varStatus="rowCounter">
 		<graph:node uri="${row.pid}" label="${row.first_name} ${row.last_name}"  group="1"  score="${row.count}" />
@@ -19,8 +20,9 @@
 	<sql:query var="printers" dataSource="jdbc/ESTCTagLib">
 		select pid, first_name, last_name, count
 		from visualization.printer
-		where pubdate = ?::int;
-		<sql:param value="${param.year}"/>
+		where (pubdate between ?::int and ?::int);
+		<sql:param value="${param.startYear}"/>
+        <sql:param value="${param.endYear}"/>
 	</sql:query>
 	<c:forEach items="${printers.rows}" var="row" varStatus="rowCounter">
 		<graph:node uri="${row.pid}" label="${row.first_name} ${row.last_name}"  group="2"  score="${row.count}" />
@@ -29,8 +31,9 @@
 	<sql:query var="publishers" dataSource="jdbc/ESTCTagLib">
 		select pid, first_name, last_name, count
 		from visualization.publisher
-		where pubdate = ?::int;
-		<sql:param value="${param.year}"/>
+		where (pubdate between ?::int and ?::int);
+		<sql:param value="${param.startYear}"/>
+        <sql:param value="${param.endYear}"/>
 	</sql:query>
 	<c:forEach items="${publishers.rows}" var="row" varStatus="rowCounter">
 		<graph:node uri="${row.pid}" label="${row.first_name} ${row.last_name}"  group="3"  score="${row.count}" />
@@ -39,8 +42,9 @@
 	<sql:query var="sellers" dataSource="jdbc/ESTCTagLib">
 		select pid, first_name, last_name, count
 		from visualization.bookseller
-		where pubdate = ?::int;
-		<sql:param value="${param.year}"/>
+		where (pubdate between ?::int and ?::int);
+		<sql:param value="${param.startYear}"/>
+        <sql:param value="${param.endYear}"/>
 	</sql:query>
 	<c:forEach items="${sellers.rows}" var="row" varStatus="rowCounter">
 		<graph:node uri="${row.pid}" label="${row.first_name} ${row.last_name}"  group="4"  score="${row.count}" />
@@ -49,8 +53,9 @@
 	<sql:query var="authorPrinter" dataSource="jdbc/ESTCTagLib">
 		select author, printer, count
 		from visualization.author_printer
-		where pubdate = ?::int;
-		<sql:param value="${param.year}"/>
+		where (pubdate between ?::int and ?::int);
+		<sql:param value="${param.startYear}"/>
+        <sql:param value="${param.endYear}"/>
 	</sql:query>
 	<c:forEach items="${authorPrinter.rows}" var="row" varStatus="rowCounter">
 		<graph:edge source="${row.author}" target="${row.printer}"  weight="${row.count}" />
@@ -59,8 +64,9 @@
 	<sql:query var="authorPublisher" dataSource="jdbc/ESTCTagLib">
 		select author, publisher, count
 		from visualization.author_publisher
-		where pubdate = ?::int;
-		<sql:param value="${param.year}"/>
+		where (pubdate between ?::int and ?::int);
+		<sql:param value="${param.startYear}"/>
+        <sql:param value="${param.endYear}"/>
 	</sql:query>
 	<c:forEach items="${authorPublisher.rows}" var="row" varStatus="rowCounter">
 		<graph:edge source="${row.author}" target="${row.publisher}"  weight="${row.count}" />
@@ -69,8 +75,9 @@
 	<sql:query var="authorSeller" dataSource="jdbc/ESTCTagLib">
 		select author, bookseller, count
 		from visualization.author_bookseller
-		where pubdate = ?::int;
-		<sql:param value="${param.year}"/>
+		where (pubdate between ?::int and ?::int);
+		<sql:param value="${param.startYear}"/>
+        <sql:param value="${param.endYear}"/>
 	</sql:query>
 	<c:forEach items="${authorSeller.rows}" var="row" varStatus="rowCounter">
 		<graph:edge source="${row.author}" target="${row.bookseller}"  weight="${row.count}" />
@@ -79,8 +86,9 @@
 	<sql:query var="printerPublisher" dataSource="jdbc/ESTCTagLib">
 		select printer, publisher, count
 		from visualization.printer_publisher
-		where pubdate = ?::int;
-		<sql:param value="${param.year}"/>
+		where (pubdate between ?::int and ?::int);
+		<sql:param value="${param.startYear}"/>
+        <sql:param value="${param.endYear}"/>
 	</sql:query>
 	<c:forEach items="${printerPublisher.rows}" var="row" varStatus="rowCounter">
 		<graph:edge source="${row.printer}" target="${row.publisher}"  weight="${row.count}" />
@@ -89,8 +97,9 @@
 	<sql:query var="printerSeller" dataSource="jdbc/ESTCTagLib">
 		select printer, bookseller, count
 		from visualization.printer_bookseller
-		where pubdate = ?::int;
-		<sql:param value="${param.year}"/>
+		where (pubdate between ?::int and ?::int);
+		<sql:param value="${param.startYear}"/>
+        <sql:param value="${param.endYear}"/>
 	</sql:query>
 	<c:forEach items="${printerSeller.rows}" var="row" varStatus="rowCounter">
 		<graph:edge source="${row.printer}" target="${row.bookseller}"  weight="${row.count}" />
@@ -99,8 +108,9 @@
 	<sql:query var="publisherSeller" dataSource="jdbc/ESTCTagLib">
 		select publisher, bookseller, count
 		from visualization.publisher_bookseller
-		where pubdate = ?::int;
-		<sql:param value="${param.year}"/>
+		where (pubdate between ?::int and ?::int);
+		<sql:param value="${param.startYear}"/>
+        <sql:param value="${param.endYear}"/>
 	</sql:query>
 	<c:forEach items="${publisherSeller.rows}" var="row" varStatus="rowCounter">
 		<graph:edge source="${row.publisher}" target="${row.bookseller}"  weight="${row.count}" />
@@ -110,7 +120,7 @@
   "nodes":[
 	<graph:foreachNode pruneOrphanThreshold="50">
 		<graph:node>
-		    {"url":"<graph:nodeUri/>","name":"<graph:nodeLabel/>","group":<graph:nodeGroup/>,"score":<graph:nodeScore/>}<c:if test="${ ! isLastNode }">,</c:if>
+		    {"id":<graph:nodeUri/>,"name":"<graph:nodeLabel/>","role":<graph:nodeGroup/>,"score":<graph:nodeScore/>}<c:if test="${ ! isLastNode }">,</c:if>
 		</graph:node>
 	</graph:foreachNode>
   ],
@@ -122,4 +132,5 @@
   	</graph:foreachEdge>
   ]
 }
+
 </graph:graph>

@@ -26,9 +26,9 @@
 <h4> Blaine Greteman
 </h4>
 <p>
-Blaine Greteman is an assistant professor of English at the University of Iowa. He specializes in the literature and culture of Shakespeare's England, 
-and his research explores questions of subjectivity and agency, especially the way those questions are shaped by literature and the material production 
-and transmission of texts.
+Blaine Greteman is an associate professor of English at the University of Iowa and a 2015-16 Stanford Humanities Center Fellow. 
+He specializes in the literature and culture of Shakespeare's England, and his research explores questions of subjectivity and 
+agency, especially the way those questions are shaped by literature and the material production and transmission of texts.
 <br />
 <br />
 Greteman has graduate degrees from the University of Oxford and the University of California, Berkeley. He contributes regularly to publications 
@@ -47,6 +47,13 @@ NASA-funded Repository-Based Software Engineering project. His RBSE team develop
 Achievement Award in 1998 from Johnson Space Center and was nominated in 1998 by JSC for the NASA Software of the Year Award. His current
 research interests involve exploring the boundaries between traditional approaches to research data warehousing, information retrieval and
 extraction, and semantic web technologies.
+</p>
+<h4> Brian Hie
+</h4>
+<p>
+Brian Hie is a student at Stanford University, majoring in Computer Science, minoring in English, and graduating with honors in 2016. 
+He has experience doing computational genomics research in the Fraser Lab at Stanford and studied abroad at Oxford, where his tutorials focused
+on Renaissance literature, especially John Donne's networks of patrons and fellow poets. After graduation he will be working in Silicon Valley.
 </p>
 <br>
 <hr>

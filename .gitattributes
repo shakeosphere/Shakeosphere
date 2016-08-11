@@ -47,6 +47,9 @@ src/main/webapp/images/graph.png -text
 src/main/webapp/images/graph_small.png -text
 src/main/webapp/images/texture1.jpg -text
 src/main/webapp/index.jsp -text
+src/main/webapp/lineChartGCC.jsp -text
+src/main/webapp/lineChartIndivBetweenness.jsp -text
+src/main/webapp/lineChartIndivDegree.jsp -text
 src/main/webapp/linked_reading/ldaData.jsp -text
 src/main/webapp/linked_reading/ldaDisplay.jsp -text
 src/main/webapp/linked_reading/ldaYearData.jsp -text
@@ -57,6 +60,8 @@ src/main/webapp/login.jsp -text
 src/main/webapp/logout.jsp -text
 src/main/webapp/membership.jsp -text
 src/main/webapp/menu.jsp -text
+src/main/webapp/networkAnalytics.jsp -text
+src/main/webapp/networkAnalyticsData.jsp -text
 src/main/webapp/people.jsp -text
 src/main/webapp/persons/female_persons.jsp -text
 src/main/webapp/persons/forename_frequency.jsp -text
@@ -76,8 +81,17 @@ src/main/webapp/publicationYearData.jsp -text
 src/main/webapp/publications/publication.jsp -text
 src/main/webapp/publications/publications.jsp -text
 src/main/webapp/publications/sublocator.jsp -text
+src/main/webapp/rangeData.jsp -text
+src/main/webapp/rankPeople.jsp -text
+src/main/webapp/resources/cytoscape.min.js -text
+src/main/webapp/resources/d3.legend.js -text
 src/main/webapp/resources/d3.v3.min.js -text
+src/main/webapp/resources/d3_tip.js -text
+src/main/webapp/resources/force_graph.js -text
+src/main/webapp/resources/jsnetworkx.js -text
 src/main/webapp/resources/layout.css -text
+src/main/webapp/resources/line_chart.js -text
+src/main/webapp/resources/spin.min.js -text
 src/main/webapp/resources/style.css -text
 src/main/webapp/search.jsp -text
 src/main/webapp/services/network_json.jsp -text

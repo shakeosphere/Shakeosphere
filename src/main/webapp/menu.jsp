@@ -9,6 +9,7 @@
 <ul>
 <li> <a href="<util:applicationRoot/>/index.jsp">Home</a></li>
 <li> <a href="<util:applicationRoot/>/search.jsp">Search the Catalog</a></li>
+<li> <a href="<util:applicationRoot/>/networkAnalytics.jsp">Social Network Analytics</a>
 <li> <a href="<util:applicationRoot/>/publicationCount.jsp">Explore the Data</a>
 <c:if test="${param.caller == 'visualization'}">
 	<ul>
