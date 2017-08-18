@@ -7,9 +7,10 @@
 
 <graph:graph>
 	<sql:query var="authors" dataSource="jdbc/ESTCTagLib">
-		select pid, first_name, last_name, count
+		select pid, first_name, last_name, sum(count) as count
 		from visualization.author
-		where (pubdate between ?::int and ?::int);
+		where (pubdate between ?::int and ?::int)
+		group by 1,2,3
 		<sql:param value="${param.startYear}"/>
         <sql:param value="${param.endYear}"/>
 	</sql:query>
@@ -18,9 +19,10 @@
 	</c:forEach>
 
 	<sql:query var="printers" dataSource="jdbc/ESTCTagLib">
-		select pid, first_name, last_name, count
+		select pid, first_name, last_name, sum(count) as count
 		from visualization.printer
-		where (pubdate between ?::int and ?::int);
+		where (pubdate between ?::int and ?::int)
+        group by 1,2,3
 		<sql:param value="${param.startYear}"/>
         <sql:param value="${param.endYear}"/>
 	</sql:query>
@@ -29,9 +31,10 @@
 	</c:forEach>
 
 	<sql:query var="publishers" dataSource="jdbc/ESTCTagLib">
-		select pid, first_name, last_name, count
+		select pid, first_name, last_name, sum(count) as count
 		from visualization.publisher
-		where (pubdate between ?::int and ?::int);
+		where (pubdate between ?::int and ?::int)
+        group by 1,2,3
 		<sql:param value="${param.startYear}"/>
         <sql:param value="${param.endYear}"/>
 	</sql:query>
@@ -40,9 +43,10 @@
 	</c:forEach>
 
 	<sql:query var="sellers" dataSource="jdbc/ESTCTagLib">
-		select pid, first_name, last_name, count
+		select pid, first_name, last_name, sum(count) as count
 		from visualization.bookseller
-		where (pubdate between ?::int and ?::int);
+		where (pubdate between ?::int and ?::int)
+        group by 1,2,3
 		<sql:param value="${param.startYear}"/>
         <sql:param value="${param.endYear}"/>
 	</sql:query>
@@ -51,9 +55,10 @@
 	</c:forEach>
 
 	<sql:query var="authorPrinter" dataSource="jdbc/ESTCTagLib">
-		select author, printer, count
+		select author, printer, sum(count) as count
 		from visualization.author_printer
-		where (pubdate between ?::int and ?::int);
+		where (pubdate between ?::int and ?::int)
+        group by 1,2
 		<sql:param value="${param.startYear}"/>
         <sql:param value="${param.endYear}"/>
 	</sql:query>
@@ -62,9 +67,10 @@
 	</c:forEach>
 
 	<sql:query var="authorPublisher" dataSource="jdbc/ESTCTagLib">
-		select author, publisher, count
+		select author, publisher, sum(count) as count
 		from visualization.author_publisher
-		where (pubdate between ?::int and ?::int);
+		where (pubdate between ?::int and ?::int)
+        group by 1,2
 		<sql:param value="${param.startYear}"/>
         <sql:param value="${param.endYear}"/>
 	</sql:query>
@@ -73,9 +79,10 @@
 	</c:forEach>
 
 	<sql:query var="authorSeller" dataSource="jdbc/ESTCTagLib">
-		select author, bookseller, count
+		select author, bookseller, sum(count) as count
 		from visualization.author_bookseller
-		where (pubdate between ?::int and ?::int);
+		where (pubdate between ?::int and ?::int)
+        group by 1,2
 		<sql:param value="${param.startYear}"/>
         <sql:param value="${param.endYear}"/>
 	</sql:query>
@@ -84,9 +91,10 @@
 	</c:forEach>
 
 	<sql:query var="printerPublisher" dataSource="jdbc/ESTCTagLib">
-		select printer, publisher, count
+		select printer, publisher, sum(count) as count
 		from visualization.printer_publisher
-		where (pubdate between ?::int and ?::int);
+		where (pubdate between ?::int and ?::int)
+        group by 1,2
 		<sql:param value="${param.startYear}"/>
         <sql:param value="${param.endYear}"/>
 	</sql:query>
@@ -95,9 +103,10 @@
 	</c:forEach>
 
 	<sql:query var="printerSeller" dataSource="jdbc/ESTCTagLib">
-		select printer, bookseller, count
+		select printer, bookseller, sum(count) as count
 		from visualization.printer_bookseller
-		where (pubdate between ?::int and ?::int);
+		where (pubdate between ?::int and ?::int)
+        group by 1,2
 		<sql:param value="${param.startYear}"/>
         <sql:param value="${param.endYear}"/>
 	</sql:query>
@@ -106,9 +115,10 @@
 	</c:forEach>
 
 	<sql:query var="publisherSeller" dataSource="jdbc/ESTCTagLib">
-		select publisher, bookseller, count
+		select publisher, bookseller, sum(count) as count
 		from visualization.publisher_bookseller
-		where (pubdate between ?::int and ?::int);
+		where (pubdate between ?::int and ?::int)
+        group by 1,2
 		<sql:param value="${param.startYear}"/>
         <sql:param value="${param.endYear}"/>
 	</sql:query>
