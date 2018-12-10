@@ -12,13 +12,13 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-	<jsp-config>
-		<jsp-property-group>
+<!-- 	<jsp-config> -->
+<!-- 		<jsp-property-group> -->
 
-			<display-name>optimizations</display-name>
-			<url-pattern>*.jsp</url-pattern>
-			<trim-directive-whitespaces>true</trim-directive-whitespaces>
-		</jsp-property-group>
+<!-- 			<display-name>optimizations</display-name> -->
+<!-- 			<url-pattern>*.jsp</url-pattern> -->
+<!-- 			<trim-directive-whitespaces>false</trim-directive-whitespaces> -->
+<!-- 		</jsp-property-group> -->
 
-	</jsp-config>
+<!-- 	</jsp-config> -->
 </web-app>
