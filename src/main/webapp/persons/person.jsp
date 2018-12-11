@@ -68,24 +68,24 @@
 	<jsp:param name="id" value="${param.pid}" />
 </jsp:include>
 
-<c:if test="${estc:personHasLocatedByYear(param.pid)}">
+<c:if test="${estc:personHasPersonInByYear(param.pid)}">
 	<h3>Locations over time</h3>
 	(number of mentions in parentheses)
 	<ul>
-	<estc:foreachLocatedByYear var="locID" sortCriteria="pubyear, count desc">
-		<estc:locatedByYear>
-			<li><estc:locatedByYearPubyear/> <estc:locatedByYearLocational/>: 
-				<estc:location lid="${tag_locatedByYear.lid}">
-					<a href="../locations/location.jsp?lid=<estc:locatedByYearLid/>"><estc:locationLabel/></a>
+	<estc:foreachPersonInByYear var="locID" sortCriteria="pubyear, count desc">
+		<estc:personInByYear>
+			<li><estc:personInByYearPubyear/> <estc:personInByYearLocational/>: 
+				<estc:location lid="${tag_personInByYear.lid}">
+					<a href="../locations/location.jsp?lid=<estc:personInByYearLid/>"><estc:locationLocation/></a>
 				</estc:location>
-				(<estc:locatedByYearCount/>)
+				(<estc:personInByYearCount/>)
 				<jsp:include page="sublocations.jsp">
 					<jsp:param name="person" value="${param.pid}"/>
-					<jsp:param name="parent" value="${tag_locatedByYear.lid}"/>
-					<jsp:param name="year" value="${tag_locatedByYear.pubyear}"/>
+					<jsp:param name="parent" value="${tag_personInByYear.lid}"/>
+					<jsp:param name="year" value="${tag_personInByYear.pubyear}"/>
 				</jsp:include>
-		</estc:locatedByYear>
-	</estc:foreachLocatedByYear>
+		</estc:personInByYear>
+	</estc:foreachPersonInByYear>
 	</ul>
 </c:if>
 
