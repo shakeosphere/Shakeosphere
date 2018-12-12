@@ -81,7 +81,7 @@
 				(<estc:personInByYearCount/>)
 				<jsp:include page="sublocations.jsp">
 					<jsp:param name="person" value="${param.pid}"/>
-					<jsp:param name="parent" value="${tag_personInByYear.lid}"/>
+					<jsp:param name="child" value="${tag_personInByYear.lid}"/>
 					<jsp:param name="year" value="${tag_personInByYear.pubyear}"/>
 				</jsp:include>
 		</estc:personInByYear>

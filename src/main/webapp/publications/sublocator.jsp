@@ -3,9 +3,9 @@
 <%@ taglib prefix="estc" uri="http://icts.uiowa.edu/ESTCTagLib"%>
 
 	<sql:query var="locations" dataSource="jdbc/ESTCTagLib">
-		select locational,location_id,location,count
+		select locational,sublocation_id,location,count
 		from navigation.sublocator
-		where id = ?::int and parent_id = ?::int ;
+		where id = ?::int and location_id = ?::int ;
 		<sql:param>${param.id}</sql:param>
 		<sql:param>${param.parent}</sql:param>
 	</sql:query>

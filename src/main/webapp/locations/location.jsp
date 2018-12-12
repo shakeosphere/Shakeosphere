@@ -18,15 +18,15 @@
 </jsp:include>
 <div id="center">
 <estc:location lid="${param.lid}">
-<h2><estc:locationLabel/></h2>
+<h2><estc:locationLocation/></h2>
 
-<c:if test="${estc:locationHasLocated(param.lid)}">
+<c:if test="${estc:locationHasPersonIn(param.lid)}">
 	<h3>Persons mentioned at this location</h3>
 	<table>
 	<sql:query var="persons" dataSource="jdbc/ESTCTagLib">
 		select person.pid,last_name,first_name,min(pubyear),max(pubyear),sum(count)
-		from navigation.located_by_year, navigation.person
-		where lid = ?::int and located_by_year.pid=person.pid
+		from navigation.person_in_by_year, navigation.person
+		where lid = ?::int and person_in_by_year.pid=person.pid
 		group by 1,2,3
 		order by min,last_name,first_name;
 		<sql:param>${param.lid}</sql:param>
