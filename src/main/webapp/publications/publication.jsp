@@ -88,6 +88,24 @@
 		</estc:record>
 	</c:if>
 	
+	<sql:query var="establishments" dataSource="jdbc/ESTCTagLib">
+		select locational, establishment_id, establishment, count
+		from navigation.establisher
+		where id = ?::int
+		order by count desc;
+		<sql:param>${param.id}</sql:param>
+	</sql:query>
+	<c:forEach items="${establishments.rows}" var="row" varStatus="rowCounter">
+		<c:if test="${rowCounter.first}">
+			<h4>Establishment(s)</h4>
+			<ul>
+		</c:if>
+			<li>${row.locational}: <a href="../establishments/establishment.jsp?lid=${row.establishment_id}">${row.establishment}</a>
+		<c:if test="${rowCounter.last}">
+			</ul>
+		</c:if>
+	</c:forEach>
+	
 	<sql:query var="locations" dataSource="jdbc/ESTCTagLib">
 		select locational, location_id, location, count
 		from navigation.locator
@@ -101,10 +119,6 @@
 			<ul>
 		</c:if>
 			<li>${row.locational}: <a href="../locations/location.jsp?lid=${row.location_id}">${row.location}</a>
-				<jsp:include page="sublocator.jsp">
-					<jsp:param name="id" value="${param.id}"/>
-					<jsp:param name="parent" value="${row.location_id}"/>
-				</jsp:include>
 		<c:if test="${rowCounter.last}">
 			</ul>
 		</c:if>
