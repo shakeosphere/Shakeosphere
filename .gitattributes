@@ -29,6 +29,8 @@ src/main/webapp/authorData.jsp -text
 src/main/webapp/contact.jsp -text
 src/main/webapp/egocentric.jsp -text
 src/main/webapp/egocentricData.jsp -text
+src/main/webapp/establishments/establishment.jsp -text
+src/main/webapp/establishments/establishments.jsp -text
 src/main/webapp/footer.jsp -text
 src/main/webapp/grants.jsp -text
 src/main/webapp/graphs/dateHistogram.jsp -text

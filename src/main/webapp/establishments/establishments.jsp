@@ -17,13 +17,13 @@
 	<jsp:param name="caller" value="location" />
 </jsp:include>
 <div id="center">
-<h2>Identified Locations in Shakeosphere</h2>
+<h2>Identified Establishments in Shakeosphere</h2>
 <ul>
-<estc:foreachLocation var="x" sortCriteria="regexp_replace(regexp_replace(regexp_replace(regexp_replace(location, '^The ', ''), '^the ', ''), '^ye ', ''), '^a ', '')">
-	<estc:location>
-		<li><a href="location.jsp?lid=<estc:locationLid/>"><estc:locationLocation/></a>
-	</estc:location>
-</estc:foreachLocation>
+<estc:foreachEstablishment var="x" sortCriteria="regexp_replace(regexp_replace(regexp_replace(regexp_replace(establishment, '^The ', ''), '^the ', ''), '^ye ', ''), '^a ', '')">
+	<estc:establishment>
+		<li><a href="establishment.jsp?eid=<estc:establishmentEid/>"><estc:establishmentEstablishment/></a>
+	</estc:establishment>
+</estc:foreachEstablishment>
 </ul>
 <jsp:include page="../footer.jsp" flush="true" />
 </div>

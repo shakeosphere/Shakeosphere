@@ -68,6 +68,27 @@
 	<jsp:param name="id" value="${param.pid}" />
 </jsp:include>
 
+<c:if test="${estc:personHasPersonAtByYear(param.pid)}">
+	<h3>Establishments over time</h3>
+	(number of mentions in parentheses)
+	<ul>
+	<estc:foreachPersonAtByYear var="estID" sortCriteria="pubyear, count desc">
+		<estc:personAtByYear>
+			<li><estc:personAtByYearPubyear/> <estc:personAtByYearLocational/>: 
+				<estc:establishment eid="${tag_personAtByYear.eid}">
+					<a href="../establishments/establishment.jsp?lid=<estc:personAtByYearEid/>"><estc:establishmentEstablishment/></a>
+				</estc:establishment>
+				(<estc:personAtByYearCount/>)
+				<jsp:include page="sublocations.jsp">
+					<jsp:param name="person" value="${param.pid}"/>
+					<jsp:param name="child" value="${tag_personAtByYear.eid}"/>
+					<jsp:param name="year" value="${tag_personAtByYear.pubyear}"/>
+				</jsp:include>
+		</estc:personAtByYear>
+	</estc:foreachPersonAtByYear>
+	</ul>
+</c:if>
+
 <c:if test="${estc:personHasPersonInByYear(param.pid)}">
 	<h3>Locations over time</h3>
 	(number of mentions in parentheses)
