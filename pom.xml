@@ -62,11 +62,6 @@
 			<artifactId>jstl</artifactId>
 			<version>1.1.2</version>
 		</dependency>
-   <dependency>
-    <groupId>org.apache.logging.log4j</groupId>
-    <artifactId>log4j-api</artifactId>
-    <version>2.5</version>
-  </dependency>
          <dependency>
         	<groupId>org.postgresql</groupId>
         	<artifactId>postgresql</artifactId>
@@ -83,6 +78,12 @@
         	<groupId>edu.uiowa.icts.taglib</groupId>
         	<artifactId>LuceneTagLib</artifactId>
         	<version>0.0.8-SNAPSHOT</version>
+        	<exclusions>
+        		<exclusion>
+        			<groupId>NLP</groupId>
+        			<artifactId>NLP</artifactId>
+        		</exclusion>
+        	</exclusions>
         </dependency>
         <dependency>
         	<groupId>edu.uiowa.icts.taglib</groupId>
